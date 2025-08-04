@@ -1,112 +1,204 @@
 [
   {
-    "id": "peugeot-207-compact-xs-2012",
-    "name": "Peugeot 207 Compact Xs",
-    "marca": "Peugeot",
-    "marcaId": "peugeot",
-    "ano": 2012,
-    "kilometraje": 999999,
-    "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
-    },
-    "categoria": "Hatchback",
-    "transmision": "Manual",
-    "motor": "1.4",
-    "combustible": "Nafta",
-    "puertas": 5,
-    "images": ["1-1.webp", "1-2.webp", "1-3.webp", "1-4.webp", "1-5.webp"],
-    "descripcion": "🔷 Peugeot 207 🔷\n\nVersión compact xs\n🔷 Motor Nafta 1.4\n🔷 Año 2012\n🔷 Segunda mano"
-  },
-  {
-    "id": "honda-crv-exl-at-4x4-2009",
-    "name": "Honda Crv Exl At 4x4",
-    "marca": "Honda",
-    "marcaId": "honda",
-    "ano": 2009,
-    "kilometraje": 230000,
-    "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
-    },
-    "categoria": "SUV",
-    "transmision": "Automática",
-    "motor": "2.0",
-    "combustible": "Nafta",
-    "puertas": 5,
-    "images": ["2-1.webp", "2-2.webp", "2-3.webp", "2-4.webp", "2-5.webp"],
-    "descripcion": "🔷 Honda Crv 🔷\n\nVersión Exl at 4x4\n🔷 Tope de gama\n🔷 Año 2009\n🔷 Kms 230.000"
-  },
-  {
-    "id": "hyundai-tucson-crdi-4x4-2009",
-    "name": "Hyundai Tucson Crdi 4x4",
-    "marca": "Hyundai",
-    "marcaId": "hyundai",
-    "ano": 2009,
-    "kilometraje": 170000,
-    "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
-    },
-    "categoria": "SUV",
-    "transmision": "Manual",
-    "motor": "2.0",
-    "combustible": "Diésel",
-    "puertas": 5,
-    "images": ["3-1.webp", "3-2.webp", "3-3.webp", "3-4.webp", "3-5.webp"],
-    "descripcion": "🔷 Hyundai Tucson\n\n🔷 Año 2009\n🔷 Versión Crdi 4x4\n🔷 Motor 2.0 Turbo diésel\n🔷 Kms 170.000"
-  },
-  {
-    "id": "toyota-hilux-srv-4x4-2009",
-    "name": "Toyota Hilux Srv 4x4",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2009,
-    "kilometraje": 240000,
+    "id": "vw-amarok-trendline-140cv-0km",
+    "name": "Vw Amarok Trendline 140cv",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2025,
+    "kilometraje": 0,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
     "categoria": "Pickup",
     "transmision": "Manual",
-    "motor": "3.0",
+    "motor": "2.0",
     "combustible": "Diésel",
     "puertas": 4,
-    "images": ["4-1.webp", "4-2.webp", "4-3.webp", "4-4.webp", "4-5.webp"],
-    "descripcion": "🔷 Toyota Hilux 🔷\n\n🔷 Año 2009\n🔷 Versión Srv 4x4\n🔷 Motor 3.0 Td\n🔷 Único dueño!!!\n🔷 Kms 240.000"
+    "images": [
+      "1-1.webp",
+      "1-2.webp",
+      "1-3.webp",
+      "1-4.webp",
+      "1-5.webp",
+      "1-6.webp",
+      "1-7.webp"
+    ],
+    "descripcion": "Vw Amarok Trendline 140cv.\n\n0km.\n\nEntrega inmediata."
   },
   {
-    "id": "peugeot-208-feline-tiptronic-2020",
-    "name": "Peugeot 208 Feline Tiptronic",
-    "marca": "Peugeot",
-    "marcaId": "peugeot",
-    "ano": 2020,
-    "kilometraje": 49000,
+    "id": "toyota-corolla-seg-0km",
+    "name": "Toyota Corolla Seg",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2025,
+    "kilometraje": 0,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Hatchback",
+    "categoria": "Sedan",
     "transmision": "Automática",
-    "motor": "1.6",
+    "motor": "2.0",
+    "combustible": "Nafta",
+    "puertas": 4,
+    "images": [
+      "2-1.webp",
+      "2-2.webp",
+      "2-3.webp",
+      "2-4.webp",
+      "2-5.webp",
+      "2-6.webp",
+      "2-7.webp",
+      "2-8.webp"
+    ],
+    "descripcion": "Toyota Corolla SEG.\n\n0km.\n\nEntrega inmediata."
+  },
+  {
+    "id": "ford-ranger-limited-2021",
+    "name": "Ford Ranger Limited",
+    "marca": "Ford",
+    "marcaId": "ford",
+    "ano": 2021,
+    "kilometraje": 115000,
+    "precio": {
+      "valor": 999999,
+      "moneda": "ARS"
+    },
+    "categoria": "Pickup",
+    "transmision": "Automática",
+    "motor": "3.2",
+    "combustible": "Diésel",
+    "puertas": 4,
+    "images": [
+      "3-1.webp",
+      "3-2.webp",
+      "3-3.webp",
+      "3-4.webp",
+      "3-5.webp",
+      "3-6.webp",
+      "3-7.webp"
+    ],
+    "descripcion": "Ford Ranger Limited.\n\nMod. 2021.\n\n115.000 kms."
+  },
+  {
+    "id": "ford-bronco-wildtrak-2022",
+    "name": "Ford Bronco Wildtrak",
+    "marca": "Ford",
+    "marcaId": "ford",
+    "ano": 2022,
+    "kilometraje": 89000,
+    "precio": {
+      "valor": 999999,
+      "moneda": "ARS"
+    },
+    "categoria": "SUV",
+    "transmision": "Automática",
+    "motor": "2.3",
     "combustible": "Nafta",
     "puertas": 5,
+    "images": [
+      "4-1.webp",
+      "4-2.webp",
+      "4-3.webp",
+      "4-4.webp",
+      "4-5.webp",
+      "4-6.webp",
+      "4-7.webp",
+      "4-8.webp"
+    ],
+    "descripcion": "Ford Bronco Wildtrak.\n\nMod. 2022.\n\n89.000 kms."
+  },
+  {
+    "id": "chevrolet-cruze-rs-2022",
+    "name": "Chevrolet Cruze Rs",
+    "marca": "Chevrolet",
+    "marcaId": "chevrolet",
+    "ano": 2022,
+    "kilometraje": 41000,
+    "precio": {
+      "valor": 999999,
+      "moneda": "ARS"
+    },
+    "categoria": "Sedan",
+    "transmision": "Automática",
+    "motor": "1.4",
+    "combustible": "Nafta",
+    "puertas": 4,
     "images": [
       "5-1.webp",
       "5-2.webp",
       "5-3.webp",
       "5-4.webp",
       "5-5.webp",
-      "5-6.webp"
+      "5-6.webp",
+      "5-7.webp",
+      "5-8.webp",
+      "5-9.webp"
     ],
-    "descripcion": "🔷 Peugeot 208\n\n🔷 Versión Feline Tiptronic\n🔷 Motor 1.6 Nafta\n🔷 Año 2020\n🔷 Kms 49.000"
+    "descripcion": "Chevrolet Cruze RS.\n\nMod. 2022.\n\n41.000 kms."
   },
   {
-    "id": "renault-duster-privilege-4x4",
-    "name": "Renault Duster Privilege 4x4",
-    "marca": "Renault",
-    "marcaId": "renault",
-    "ano": 999999,
+    "id": "vw-amarok-v6-comfortline-2021",
+    "name": "Vw Amarok V6 Comfortline",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2021,
+    "kilometraje": 125000,
+    "precio": {
+      "valor": 999999,
+      "moneda": "ARS"
+    },
+    "categoria": "Pickup",
+    "transmision": "Automática",
+    "motor": "3.0",
+    "combustible": "Diésel",
+    "puertas": 4,
+    "images": [
+      "6-1.webp",
+      "6-2.webp",
+      "6-3.webp",
+      "6-4.webp",
+      "6-5.webp",
+      "6-6.webp",
+      "6-7.webp"
+    ],
+    "descripcion": "Vw Amarok V6 Comfortline.\n\nMod. 2021.\n\n125.000 kms."
+  },
+  {
+    "id": "vw-amarok-v6-comfortline-2020",
+    "name": "Vw Amarok V6 Comfortline",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2020,
+    "kilometraje": 80000,
+    "precio": {
+      "valor": 999999,
+      "moneda": "ARS"
+    },
+    "categoria": "Pickup",
+    "transmision": "Automática",
+    "motor": "3.0",
+    "combustible": "Diésel",
+    "puertas": 4,
+    "images": [
+      "7-1.webp",
+      "7-2.webp",
+      "7-3.webp",
+      "7-4.webp",
+      "7-5.webp",
+      "7-6.webp",
+      "7-7.webp",
+      "7-8.webp"
+    ],
+    "descripcion": "Vw Amarok V6 Comfortline.\n\nMod. 2020.\n\n80.000 kms."
+  },
+  {
+    "id": "jeep-renegade-sport-2018",
+    "name": "Jeep Renegade Sport",
+    "marca": "Jeep",
+    "marcaId": "jeep",
+    "ano": 2018,
     "kilometraje": 129000,
     "precio": {
       "valor": 999999,
@@ -114,59 +206,7 @@
     },
     "categoria": "SUV",
     "transmision": "Manual",
-    "motor": "2.0",
-    "combustible": "Nafta",
-    "puertas": 5,
-    "images": [
-      "6-1.webp",
-      "6-2.webp",
-      "6-3.webp",
-      "6-4.webp",
-      "6-5.webp",
-      "6-6.webp"
-    ],
-    "descripcion": "🔷 Renault Duster\n\n🔷 Versión Privilege 4x4\n🔷 Motor 2.0 Nafta\n🔷 Kms 129.000"
-  },
-  {
-    "id": "toyota-sw4-srx-at-7-as-4x4-2018",
-    "name": "Toyota Sw4 Srx At 7 As 4x4",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2018,
-    "kilometraje": 150000,
-    "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
-    },
-    "categoria": "SUV",
-    "transmision": "Automática",
-    "motor": "2.8",
-    "combustible": "Diésel",
-    "puertas": 5,
-    "images": [
-      "7-1.webp",
-      "7-2.webp",
-      "7-3.webp",
-      "7-4.webp",
-      "7-5.webp",
-      "7-6.webp"
-    ],
-    "descripcion": "🔷Toyota Sw4\n\n🔷Año 2018\n🔷Version SRX At 7 as. 4x4\n🔷Kms 150.000\n🔷Cubiertas 0km."
-  },
-  {
-    "id": "ford-ecosport-se-2015",
-    "name": "Ford Ecosport Se",
-    "marca": "Ford",
-    "marcaId": "ford",
-    "ano": 2015,
-    "kilometraje": 150000,
-    "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
-    },
-    "categoria": "SUV",
-    "transmision": "Manual",
-    "motor": "1.6",
+    "motor": "1.8",
     "combustible": "Nafta",
     "puertas": 5,
     "images": [
@@ -178,48 +218,55 @@
       "8-6.webp",
       "8-7.webp"
     ],
-    "descripcion": "🔹 Ford Ecosport 🔹\n\n🔹 Año 2015\n🔹 Versión SE\n🔹 Motor 1.6 Nafta\n🔹 Kms 150.000"
+    "descripcion": "Jeep Renegade Sport.\n\nMod. 2018.\n\n129.000 kms."
   },
   {
-    "id": "ford-fiesta-kinetic-se-plus-2017",
-    "name": "Ford Fiesta Kinetic Se Plus",
-    "marca": "Ford",
-    "marcaId": "ford",
-    "ano": 2017,
-    "kilometraje": 82000,
+    "id": "vw-amarok-v6-extreme-0km",
+    "name": "Vw Amarok V6 Extreme",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2025,
+    "kilometraje": 0,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Hatchback",
-    "transmision": "Manual",
-    "motor": "1.6",
-    "combustible": "Nafta",
-    "puertas": 5,
+    "categoria": "Pickup",
+    "transmision": "Automática",
+    "motor": "3.0",
+    "combustible": "Diésel",
+    "puertas": 4,
     "images": [
       "9-1.webp",
       "9-2.webp",
       "9-3.webp",
       "9-4.webp",
       "9-5.webp",
-      "9-6.webp"
+      "9-6.webp",
+      "9-7.webp",
+      "9-8.webp",
+      "9-9.webp",
+      "9-10.webp",
+      "9-11.webp",
+      "9-12.webp",
+      "9-13.webp"
     ],
-    "descripcion": "🔹Ford Fiesta\n\n🔹Año 2017\n🔹Versión Kinetic SE Plus\n🔹Motor 1.6 Nafta\n🔹Kms 82.000"
+    "descripcion": "Vw Amarok V6 Extreme.\n\n0km.\n\nEntrega inmediata."
   },
   {
-    "id": "ford-ecosport-se-2015-2",
-    "name": "Ford Ecosport Se",
-    "marca": "Ford",
-    "marcaId": "ford",
-    "ano": 2015,
-    "kilometraje": 60000,
+    "id": "renault-kardian-techno-0km",
+    "name": "Renault Kardian Techno",
+    "marca": "Renault",
+    "marcaId": "renault",
+    "ano": 2025,
+    "kilometraje": 0,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
     "categoria": "SUV",
-    "transmision": "Manual",
-    "motor": "1.5",
+    "transmision": "Automática",
+    "motor": "1.0",
     "combustible": "Nafta",
     "puertas": 5,
     "images": [
@@ -228,23 +275,25 @@
       "10-3.webp",
       "10-4.webp",
       "10-5.webp",
-      "10-6.webp"
+      "10-6.webp",
+      "10-7.webp",
+      "10-8.webp"
     ],
-    "descripcion": "♦️Ford Ecosport\n\n♦️Versión SE\n♦️Motor 1.5 Nafta\n♦️Kms 60.000"
+    "descripcion": "Renault Kardian Techno.\n\n0km.\n\nEntrega inmediata."
   },
   {
-    "id": "peugeot-308-allure-2012",
-    "name": "Peugeot 308 Allure",
-    "marca": "Peugeot",
-    "marcaId": "peugeot",
-    "ano": 2012,
-    "kilometraje": 141000,
+    "id": "citroen-c4-cactus-shine-2025",
+    "name": "Citroën C4 Cactus Shine",
+    "marca": "Citroën",
+    "marcaId": "citroen",
+    "ano": 2025,
+    "kilometraje": 2500,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Hatchback",
-    "transmision": "Manual",
+    "categoria": "SUV",
+    "transmision": "Automática",
     "motor": "1.6",
     "combustible": "Nafta",
     "puertas": 5,
@@ -256,27 +305,38 @@
       "11-5.webp",
       "11-6.webp",
       "11-7.webp",
-      "11-8.webp"
+      "11-8.webp",
+      "11-9.webp"
     ],
-    "descripcion": "Vení mañana y llevate este hermoso Peugeot 308!!!\n\n🔹 Año 2012\n🔹 Motor 1.6 Nafta\n🔹 Versión Allure\n🔹 Kms 141.000\n🔹 Cubiertas 0km!!!"
+    "descripcion": "Citroën C4 Cactus Shine.\n\nMod. 2025.\n\n2.500 kms."
   },
   {
-    "id": "toyota-hilux-srx-2-8-4x4-at-2016",
-    "name": "Toyota Hilux Srx 2.8 4x4 At",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2016,
-    "kilometraje": 89000,
+    "id": "vw-amarok-v6-highline-2022",
+    "name": "Vw Amarok V6 Highline",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2022,
+    "kilometraje": 187000,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
     "categoria": "Pickup",
     "transmision": "Automática",
-    "motor": "2.8",
+    "motor": "3.0",
     "combustible": "Diésel",
     "puertas": 4,
-    "images": ["12-1.webp", "12-2.webp", "12-3.webp", "12-4.webp"],
-    "descripcion": "💎 Toyota Hilux SRX 2.8 4x4 At 2016 89.000 kms 💎"
+    "images": [
+      "12-1.webp",
+      "12-2.webp",
+      "12-3.webp",
+      "12-4.webp",
+      "12-5.webp",
+      "12-6.webp",
+      "12-7.webp",
+      "12-8.webp",
+      "12-9.webp"
+    ],
+    "descripcion": "Vw Amarok V6 Highline.\n\nMod. 2022.\n\n187.000 kms."
   }
 ]
