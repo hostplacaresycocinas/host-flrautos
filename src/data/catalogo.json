@@ -1,19 +1,19 @@
 [
   {
-    "id": "toyota-corolla-seg-2016",
-    "name": "Toyota Corolla Seg",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2016,
-    "kilometraje": 999999,
+    "id": "ford-ranger-limited-v6-2023",
+    "name": "Ford Ranger Limited V6",
+    "marca": "Ford",
+    "marcaId": "ford",
+    "ano": 2023,
+    "kilometraje": 69000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 41900,
+      "moneda": "USD"
     },
-    "categoria": "Sedan",
+    "categoria": "Pickup",
     "transmision": "Automática",
-    "motor": "1.8",
-    "combustible": "Nafta",
+    "motor": "3.0 V6",
+    "combustible": "Diésel",
     "puertas": 4,
     "images": [
       "1-1.webp",
@@ -27,23 +27,23 @@
       "1-9.webp",
       "1-10.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN SEG✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA AUTOMATICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "••••��NUEVO INGRESO🔥••••\n\nRANGER LIMITED V6 2023\n\n🧭69.000Km\n⚙️3.0 V6 / 250cv / At\n\n✔️Impecable estado\n✔️Unico dueño\n✔️Pintura de fábrica\n✔️Tomamos tu usado\n\n✖️NO financiamos✖️\n\n💵41.900 (Contado)\n💵42.900 (Permutas)\n\n#UNICA EN SU ESTADO\n\nTe esperamos!!!\n\n#FLRAUTOS#FORD#RANGER#LIMITED#CHATAS"
   },
   {
-    "id": "toyota-corolla-xei-pack-2016",
-    "name": "Toyota Corolla Xei Pack",
+    "id": "toyota-hilux-srx-4x4-2023",
+    "name": "Toyota Hilux SRX 4X4",
     "marca": "Toyota",
     "marcaId": "toyota",
-    "ano": 2016,
-    "kilometraje": 999999,
+    "ano": 2023,
+    "kilometraje": 60000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 45000,
+      "moneda": "USD"
     },
-    "categoria": "Sedan",
+    "categoria": "Pickup",
     "transmision": "Automática",
-    "motor": "1.8",
-    "combustible": "Nafta",
+    "motor": "2.8 Tdi",
+    "combustible": "Diésel",
     "puertas": 4,
     "images": [
       "2-1.webp",
@@ -56,25 +56,26 @@
       "2-8.webp",
       "2-9.webp",
       "2-10.webp",
-      "2-11.webp"
+      "2-11.webp",
+      "2-12.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI PACK✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA AUTOMÁTICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS NUEVAS RECIÉN PUESTAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••🔥NUEVO INGRESO🔥•••••\n\nHILUX SRX 4X4 AT 2023\n\n🧭60.000Km\n⚙️2.8 Tdi 204cv / Automática\n\n✔️Impecable estado\n✔️Tomamos tu 🚘\n\n✖️NO financiamos✖️\n\n💵45.000 Dólares\n\n#FLRAUTOS#HILUX#TOYOTA #CHATAS"
   },
   {
-    "id": "volkswagen-suran-track-2019",
-    "name": "Volkswagen Suran Track",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2019,
-    "kilometraje": 999999,
+    "id": "toyota-innova-srv-2017",
+    "name": "Toyota Innova SRV",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2017,
+    "kilometraje": 148000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 19900,
+      "moneda": "USD"
     },
-    "categoria": "Utilitario",
-    "transmision": "Manual",
-    "motor": "1.6",
-    "combustible": "Nafta/GNC",
+    "categoria": "SUV",
+    "transmision": "Automática",
+    "motor": "2.7",
+    "combustible": "Nafta",
     "puertas": 5,
     "images": [
       "3-1.webp",
@@ -88,25 +89,24 @@
       "3-9.webp",
       "3-10.webp",
       "3-11.webp",
-      "3-12.webp",
-      "3-13.webp"
+      "3-12.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN SURAN✅\n\nVERSIÓN TRACK✅\n\nMODELO 2019✅\n\nMOTOR 1.6 NAFTA / GNC ( DOBLE TUBO DONDE VA EL AUXILIO)✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nDISTRIBUCIÓN HECHA✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••🔥NUEVO INGRESO🔥•••••\n\nINNOVA SRV 2017\n\n🧭148.000Km\n⚙️2.7 Nafta / 8 Plazas - Automática\n\n✔️Excelente estado\n✔️Tomamos tu 🚗\n\n✖️NO financiamos✖️\n\n💵19.900 Dólares\n\n#FLRAUTOS#TOYOTA#INNOVA"
   },
   {
-    "id": "volkswagen-golf-comfortline-2016",
-    "name": "Volkswagen Golf Comfortline",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2016,
-    "kilometraje": 999999,
+    "id": "peugeot-208-allure-0km",
+    "name": "Peugeot 208 Allure",
+    "marca": "Peugeot",
+    "marcaId": "peugeot",
+    "ano": 2025,
+    "kilometraje": 0,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 22900,
+      "moneda": "USD"
     },
     "categoria": "Hatchback",
     "transmision": "Automática",
-    "motor": "1.4",
+    "motor": "1.6",
     "combustible": "Nafta",
     "puertas": 5,
     "images": [
@@ -122,29 +122,26 @@
       "4-10.webp",
       "4-11.webp",
       "4-12.webp",
-      "4-13.webp",
-      "4-14.webp",
-      "4-15.webp",
-      "4-16.webp"
+      "4-13.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN GOLF ✅\n\nVERSIÓN COMFORTLINE✅\n\nMODELO 2016✅\n\nMOTOR 1.4 TSI NAFTA ✅\n\nCAJA AUTOMÁTICA DSG 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS PIRELLIS NUEVAS✅\n\nBATERÍA NUEVA✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••🔥NUEVO INGRESO🔥•••••\n\n208 ALLURE AT 0KM\n\n🧭0KM\n⚙️1.6 Automático\n\n✔️Gris Artens\n✔️Entrega inmediata\n\n💵22.900 Dólares (Precio único)\n\n#FLRAUTOS#PEUGEOT#208"
   },
   {
-    "id": "toyota-corolla-xli-2016",
-    "name": "Toyota Corolla Xli",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2016,
-    "kilometraje": 999999,
+    "id": "peugeot-208-feline-2024",
+    "name": "Peugeot 208 Feline",
+    "marca": "Peugeot",
+    "marcaId": "peugeot",
+    "ano": 2024,
+    "kilometraje": 16000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 21000,
+      "moneda": "USD"
     },
-    "categoria": "Sedan",
+    "categoria": "Hatchback",
     "transmision": "Automática",
-    "motor": "1.8",
+    "motor": "1.6",
     "combustible": "Nafta",
-    "puertas": 4,
+    "puertas": 5,
     "images": [
       "5-1.webp",
       "5-2.webp",
@@ -155,30 +152,26 @@
       "5-7.webp",
       "5-8.webp",
       "5-9.webp",
-      "5-10.webp",
-      "5-11.webp",
-      "5-12.webp",
-      "5-13.webp",
-      "5-14.webp"
+      "5-10.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XLI ✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA AUTOMATICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO🧷\n\nAGREGADOS➕\n\nLLANTAS VERSIONES SEG ➕\n\nSENSORES MARCHA ATRÁS ➕\n\nVELOCIDAD CRUCERO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "••••🔥NUEVO INGRESO🔥••••\n\n208 FELINE 2024\n\n🧭16.000Km\n⚙️1.6 Nafta / Automático\n\n✔️Gris Artens\n✔️Impecable estado, como nuevo\n✔️Tomamos tu 🚗\n\n💵21.000 Dólares\n\n#FLRAUTOS#208#FELINE#PEUGEOT"
   },
   {
-    "id": "chevrolet-onix-ltz-2016",
-    "name": "Chevrolet Onix Ltz",
-    "marca": "Chevrolet",
-    "marcaId": "chevrolet",
-    "ano": 2016,
-    "kilometraje": 999999,
+    "id": "toyota-corolla-gr-sport-2024",
+    "name": "Toyota Corolla GR Sport",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2024,
+    "kilometraje": 7900,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 36000,
+      "moneda": "USD"
     },
-    "categoria": "Hatchback",
-    "transmision": "Manual",
-    "motor": "1.4",
+    "categoria": "Sedan",
+    "transmision": "Automática",
+    "motor": "2.0",
     "combustible": "Nafta",
-    "puertas": 5,
+    "puertas": 4,
     "images": [
       "6-1.webp",
       "6-2.webp",
@@ -189,28 +182,26 @@
       "6-7.webp",
       "6-8.webp",
       "6-9.webp",
-      "6-10.webp",
-      "6-11.webp",
-      "6-12.webp"
+      "6-10.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅CHEVROLET ONIX ✅\n\nVERSIÓN LTZ✅\n\nMODELO 2016✅\n\nMOTOR 1.4 NAFTA ✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS NUEVAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "••••🔥NUEVO INGRESO🔥••••\n\nCOROLLA GR SPORT 2024\n\n🧭7.900Km\n⚙️2.0 170cv / At'10\n\n✔️Como 0km\n✔️Blanco perlado\n✔️Tomamos tu usado\n\n✖️NO financiamos✖️\n\n💵36.000 Dólares\n\n#COROLLA#GR#TOYOTA#toyotagazooracing"
   },
   {
-    "id": "toyota-corolla-xei-pack-2016-2",
-    "name": "Toyota Corolla Xei Pack",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2016,
-    "kilometraje": 999999,
+    "id": "volkswagen-beetle-design-2015",
+    "name": "Volkswagen Beetle Design",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2015,
+    "kilometraje": 107000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 19000,
+      "moneda": "USD"
     },
-    "categoria": "Sedan",
-    "transmision": "Manual",
-    "motor": "1.8",
-    "combustible": "Nafta/GNC",
-    "puertas": 4,
+    "categoria": "Hatchback",
+    "transmision": "Automática",
+    "motor": "1.4T",
+    "combustible": "Nafta",
+    "puertas": 3,
     "images": [
       "7-1.webp",
       "7-2.webp",
@@ -221,29 +212,24 @@
       "7-7.webp",
       "7-8.webp",
       "7-9.webp",
-      "7-10.webp",
-      "7-11.webp",
-      "7-12.webp",
-      "7-13.webp",
-      "7-14.webp",
-      "7-15.webp"
+      "7-10.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI PACK✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA / GNC✅\n\nCAJA MANUAL 6 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••🔥NUEVO INGRESO🔥•••••\n\nTHE BEETLE DESIGN 2015 DSG\n\n🧭107.000Km\n⚙️1.4T Dsg + Cuero\n\n✔️Increíble estado\n✔️Suspensión + Llantas 20 Volcano\n✔️Cree led x4\n✔️Tomamos tu 🚗\n✔️Tiene mucho dinero invertido con lo mejor\n\n💣No te lo pierdas💣\n\n💵19.000 Dólares\n\n#FLRAUTOS#BEETLE#VOLKSWAGEN#ESCARABAJO 🪲"
   },
   {
-    "id": "toyota-corolla-xei-2014",
-    "name": "Toyota Corolla Xei",
-    "marca": "Toyota",
-    "marcaId": "toyota",
-    "ano": 2014,
-    "kilometraje": 999999,
+    "id": "renault-oroch-privilege-2017",
+    "name": "Renault Oroch Privilege",
+    "marca": "Renault",
+    "marcaId": "renault",
+    "ano": 2017,
+    "kilometraje": 88000,
     "precio": {
-      "valor": 999999,
+      "valor": 19900000,
       "moneda": "ARS"
     },
-    "categoria": "Sedan",
+    "categoria": "Pickup",
     "transmision": "Manual",
-    "motor": "1.8",
+    "motor": "2.0",
     "combustible": "Nafta",
     "puertas": 4,
     "images": [
@@ -257,28 +243,25 @@
       "8-8.webp",
       "8-9.webp",
       "8-10.webp",
-      "8-11.webp",
-      "8-12.webp",
-      "8-13.webp",
-      "8-14.webp"
+      "8-11.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI✅\n\nMODELO 2014✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA MANUAL 6 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••💣NUEVO INGRESO💣•••••\n\nOROCH PRIVILEGE 2.0 2017\n\n🧭88.000Km\n⚙️2.0 Nafta / 4x2\n\n✔️Impecable estado\n✔️Tomamos tu usado\n\n✖️NO financiamos✖️\n\n💰19.900.000 Pesos\n\n#FLRAUTOS#RENAULT#OROCH"
   },
   {
-    "id": "toyota-corolla-xei-pack-2017",
-    "name": "Toyota Corolla Xei Pack",
+    "id": "toyota-corolla-xli-2018",
+    "name": "Toyota Corolla XLI",
     "marca": "Toyota",
     "marcaId": "toyota",
-    "ano": 2017,
-    "kilometraje": 999999,
+    "ano": 2018,
+    "kilometraje": 114000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 18500,
+      "moneda": "USD"
     },
     "categoria": "Sedan",
     "transmision": "Automática",
     "motor": "1.8",
-    "combustible": "Nafta/GNC",
+    "combustible": "Nafta",
     "puertas": 4,
     "images": [
       "9-1.webp",
@@ -292,27 +275,24 @@
       "9-9.webp",
       "9-10.webp",
       "9-11.webp",
-      "9-12.webp",
-      "9-13.webp",
-      "9-14.webp",
-      "9-15.webp"
+      "9-12.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI PACK✅\n\nMODELO 2017✅\n\nMOTOR 1.8 NAFTA / GNC✅\n\nCAJA AUTOMATICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS NUEVAS RECIÉN COLOCADAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••🔥NUEVO INGRESO🔥•••••\n\nCOROLLA XLI AT 2018\n\n🧭114.000Km\n⚙️1.8 Nafta / Automático\n\n✔️Cubiertas nuevas\n✔️Impecable sin detalles\n✔️Tomamos tu 🚗\n\n✖️NO financiamos✖️\n\n💵18.500 Dólares\n\n#FLRAUTOS#COROLLA#TOYOTA"
   },
   {
-    "id": "volkswagen-golf-comfortline-2015",
-    "name": "Volkswagen Golf Comfortline",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2015,
-    "kilometraje": 999999,
+    "id": "renault-koleos-privilege-2010",
+    "name": "Renault Koleos Privilege",
+    "marca": "Renault",
+    "marcaId": "renault",
+    "ano": 2010,
+    "kilometraje": 171000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 10500,
+      "moneda": "USD"
     },
-    "categoria": "Hatchback",
-    "transmision": "Automática",
-    "motor": "1.4",
+    "categoria": "SUV",
+    "transmision": "Manual",
+    "motor": "2.5",
     "combustible": "Nafta",
     "puertas": 5,
     "images": [
@@ -326,26 +306,27 @@
       "10-8.webp",
       "10-9.webp",
       "10-10.webp",
-      "10-11.webp"
+      "10-11.webp",
+      "10-12.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN GOLF✅\n\nVERSIÓN COMFORTLINE ✅\n\nMODELO 2015✅\n\nMOTOR 1.4 TURBO NAFTA✅\n\nCAJA AUTOMÁTICA DSG 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "••••🔥NUEVO INGRESO🔥••••\n\nKOLEOS PRIVILEGE 4X4 2010\n\n🧭171.000Km\n⚙️2.5 Nafta / Manual\n\n✔️Impecable estado\n✔️Tomamos tu 🚗\n\n✖️NO financiamos✖️\n\n💵10.500 Dólares\n\n#FLRAUTOS#RENAULT #KOLEOS"
   },
   {
-    "id": "ford-focus-trend-2011",
-    "name": "Ford Focus Trend",
-    "marca": "Ford",
-    "marcaId": "ford",
-    "ano": 2011,
-    "kilometraje": 999999,
+    "id": "honda-civic-exs-2012",
+    "name": "Honda Civic EXS",
+    "marca": "Honda",
+    "marcaId": "honda",
+    "ano": 2012,
+    "kilometraje": 116000,
     "precio": {
-      "valor": 999999,
-      "moneda": "ARS"
+      "valor": 13900,
+      "moneda": "USD"
     },
-    "categoria": "Hatchback",
+    "categoria": "Sedan",
     "transmision": "Manual",
-    "motor": "1.6",
+    "motor": "1.8",
     "combustible": "Nafta",
-    "puertas": 5,
+    "puertas": 4,
     "images": [
       "11-1.webp",
       "11-2.webp",
@@ -359,23 +340,22 @@
       "11-10.webp",
       "11-11.webp",
       "11-12.webp",
-      "11-13.webp",
-      "11-14.webp"
+      "11-13.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅FORD FOCUS✅\n\nVERSIÓN TREND✅\n\nMODELO 2011✅\n\nMOTOR 1.6 NAFTA ✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\nDISTRIBUCIÓN Y BOMBA DE AGUA HECHA✅\n\n4 CUBIERTAS NUEVAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "•••••🔥VENDIDO🔥•••••\n\nCIVIC EXS 2012\n\n🧭116.000Km\n⚙️1.8 Nafta / Manual - 6ta\n\n✔️Impecable estado\n✔️Muy cuidado y mantenido\n✔️Tomamos tu 🚗\n\n✖️NO financiamos✖️\n\n💵13.900 Dolares\n\n#FLRAUTOS#CIVIC#HONDA"
   },
   {
-    "id": "volkswagen-gol-trend-pack-i-2013",
-    "name": "Volkswagen Gol Trend Pack I",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2013,
+    "id": "nissan-kicks-sense-2018",
+    "name": "Nissan Kicks Sense",
+    "marca": "Nissan",
+    "marcaId": "nissan",
+    "ano": 2018,
     "kilometraje": 999999,
     "precio": {
-      "valor": 999999,
+      "valor": 20900000,
       "moneda": "ARS"
     },
-    "categoria": "Hatchback",
+    "categoria": "SUV",
     "transmision": "Manual",
     "motor": "1.6",
     "combustible": "Nafta",
@@ -391,9 +371,8 @@
       "12-8.webp",
       "12-9.webp",
       "12-10.webp",
-      "12-11.webp",
-      "12-12.webp"
+      "12-11.webp"
     ],
-    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN GOL TREND✅\n\nPACK I✅\n\nMODELO 2013✅\n\nMOTOR 1.6 NAFTA✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS BUEN ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
+    "descripcion": "••••🔥NUEVO INGRESO🔥••••\n\nKICKS SENSE 2018\n\n⚙️1.6 Nafta , Manual\n\n✔️Único dueño\n✔️Cubiertas nuevas yokohama\n✔️Tomamos tu usado\n\n💰20.900.000\n\n#FLRAUTOS #NISSAN#KICKS#SUV"
   }
 ]
