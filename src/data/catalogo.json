@@ -1,19 +1,19 @@
 [
   {
-    "id": "vw-amarok-trendline-140cv-0km",
-    "name": "Vw Amarok Trendline 140cv",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2025,
-    "kilometraje": 0,
+    "id": "toyota-corolla-seg-2016",
+    "name": "Toyota Corolla Seg",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2016,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Pickup",
-    "transmision": "Manual",
-    "motor": "2.0",
-    "combustible": "Diésel",
+    "categoria": "Sedan",
+    "transmision": "Automática",
+    "motor": "1.8",
+    "combustible": "Nafta",
     "puertas": 4,
     "images": [
       "1-1.webp",
@@ -22,24 +22,27 @@
       "1-4.webp",
       "1-5.webp",
       "1-6.webp",
-      "1-7.webp"
+      "1-7.webp",
+      "1-8.webp",
+      "1-9.webp",
+      "1-10.webp"
     ],
-    "descripcion": "Vw Amarok Trendline 140cv.\n\n0km.\n\nEntrega inmediata."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN SEG✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA AUTOMATICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "toyota-corolla-seg-0km",
-    "name": "Toyota Corolla Seg",
+    "id": "toyota-corolla-xei-pack-2016",
+    "name": "Toyota Corolla Xei Pack",
     "marca": "Toyota",
     "marcaId": "toyota",
-    "ano": 2025,
-    "kilometraje": 0,
+    "ano": 2016,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
     "categoria": "Sedan",
     "transmision": "Automática",
-    "motor": "2.0",
+    "motor": "1.8",
     "combustible": "Nafta",
     "puertas": 4,
     "images": [
@@ -50,26 +53,29 @@
       "2-5.webp",
       "2-6.webp",
       "2-7.webp",
-      "2-8.webp"
+      "2-8.webp",
+      "2-9.webp",
+      "2-10.webp",
+      "2-11.webp"
     ],
-    "descripcion": "Toyota Corolla SEG.\n\n0km.\n\nEntrega inmediata."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI PACK✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA AUTOMÁTICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS NUEVAS RECIÉN PUESTAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "ford-ranger-limited-2021",
-    "name": "Ford Ranger Limited",
-    "marca": "Ford",
-    "marcaId": "ford",
-    "ano": 2021,
-    "kilometraje": 115000,
+    "id": "volkswagen-suran-track-2019",
+    "name": "Volkswagen Suran Track",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2019,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Pickup",
-    "transmision": "Automática",
-    "motor": "3.2",
-    "combustible": "Diésel",
-    "puertas": 4,
+    "categoria": "Utilitario",
+    "transmision": "Manual",
+    "motor": "1.6",
+    "combustible": "Nafta/GNC",
+    "puertas": 5,
     "images": [
       "3-1.webp",
       "3-2.webp",
@@ -77,24 +83,30 @@
       "3-4.webp",
       "3-5.webp",
       "3-6.webp",
-      "3-7.webp"
+      "3-7.webp",
+      "3-8.webp",
+      "3-9.webp",
+      "3-10.webp",
+      "3-11.webp",
+      "3-12.webp",
+      "3-13.webp"
     ],
-    "descripcion": "Ford Ranger Limited.\n\nMod. 2021.\n\n115.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN SURAN✅\n\nVERSIÓN TRACK✅\n\nMODELO 2019✅\n\nMOTOR 1.6 NAFTA / GNC ( DOBLE TUBO DONDE VA EL AUXILIO)✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nDISTRIBUCIÓN HECHA✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "ford-bronco-wildtrak-2022",
-    "name": "Ford Bronco Wildtrak",
-    "marca": "Ford",
-    "marcaId": "ford",
-    "ano": 2022,
-    "kilometraje": 89000,
+    "id": "volkswagen-golf-comfortline-2016",
+    "name": "Volkswagen Golf Comfortline",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2016,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "SUV",
+    "categoria": "Hatchback",
     "transmision": "Automática",
-    "motor": "2.3",
+    "motor": "1.4",
     "combustible": "Nafta",
     "puertas": 5,
     "images": [
@@ -105,24 +117,32 @@
       "4-5.webp",
       "4-6.webp",
       "4-7.webp",
-      "4-8.webp"
+      "4-8.webp",
+      "4-9.webp",
+      "4-10.webp",
+      "4-11.webp",
+      "4-12.webp",
+      "4-13.webp",
+      "4-14.webp",
+      "4-15.webp",
+      "4-16.webp"
     ],
-    "descripcion": "Ford Bronco Wildtrak.\n\nMod. 2022.\n\n89.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN GOLF ✅\n\nVERSIÓN COMFORTLINE✅\n\nMODELO 2016✅\n\nMOTOR 1.4 TSI NAFTA ✅\n\nCAJA AUTOMÁTICA DSG 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS PIRELLIS NUEVAS✅\n\nBATERÍA NUEVA✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "chevrolet-cruze-rs-2022",
-    "name": "Chevrolet Cruze Rs",
-    "marca": "Chevrolet",
-    "marcaId": "chevrolet",
-    "ano": 2022,
-    "kilometraje": 41000,
+    "id": "toyota-corolla-xli-2016",
+    "name": "Toyota Corolla Xli",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2016,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
     "categoria": "Sedan",
     "transmision": "Automática",
-    "motor": "1.4",
+    "motor": "1.8",
     "combustible": "Nafta",
     "puertas": 4,
     "images": [
@@ -134,26 +154,31 @@
       "5-6.webp",
       "5-7.webp",
       "5-8.webp",
-      "5-9.webp"
+      "5-9.webp",
+      "5-10.webp",
+      "5-11.webp",
+      "5-12.webp",
+      "5-13.webp",
+      "5-14.webp"
     ],
-    "descripcion": "Chevrolet Cruze RS.\n\nMod. 2022.\n\n41.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XLI ✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA AUTOMATICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO🧷\n\nAGREGADOS➕\n\nLLANTAS VERSIONES SEG ➕\n\nSENSORES MARCHA ATRÁS ➕\n\nVELOCIDAD CRUCERO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "vw-amarok-v6-comfortline-2021",
-    "name": "Vw Amarok V6 Comfortline",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2021,
-    "kilometraje": 125000,
+    "id": "chevrolet-onix-ltz-2016",
+    "name": "Chevrolet Onix Ltz",
+    "marca": "Chevrolet",
+    "marcaId": "chevrolet",
+    "ano": 2016,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Pickup",
-    "transmision": "Automática",
-    "motor": "3.0",
-    "combustible": "Diésel",
-    "puertas": 4,
+    "categoria": "Hatchback",
+    "transmision": "Manual",
+    "motor": "1.4",
+    "combustible": "Nafta",
+    "puertas": 5,
     "images": [
       "6-1.webp",
       "6-2.webp",
@@ -161,25 +186,30 @@
       "6-4.webp",
       "6-5.webp",
       "6-6.webp",
-      "6-7.webp"
+      "6-7.webp",
+      "6-8.webp",
+      "6-9.webp",
+      "6-10.webp",
+      "6-11.webp",
+      "6-12.webp"
     ],
-    "descripcion": "Vw Amarok V6 Comfortline.\n\nMod. 2021.\n\n125.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅CHEVROLET ONIX ✅\n\nVERSIÓN LTZ✅\n\nMODELO 2016✅\n\nMOTOR 1.4 NAFTA ✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS NUEVAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "vw-amarok-v6-comfortline-2020",
-    "name": "Vw Amarok V6 Comfortline",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2020,
-    "kilometraje": 80000,
+    "id": "toyota-corolla-xei-pack-2016-2",
+    "name": "Toyota Corolla Xei Pack",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2016,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Pickup",
-    "transmision": "Automática",
-    "motor": "3.0",
-    "combustible": "Diésel",
+    "categoria": "Sedan",
+    "transmision": "Manual",
+    "motor": "1.8",
+    "combustible": "Nafta/GNC",
     "puertas": 4,
     "images": [
       "7-1.webp",
@@ -189,26 +219,33 @@
       "7-5.webp",
       "7-6.webp",
       "7-7.webp",
-      "7-8.webp"
+      "7-8.webp",
+      "7-9.webp",
+      "7-10.webp",
+      "7-11.webp",
+      "7-12.webp",
+      "7-13.webp",
+      "7-14.webp",
+      "7-15.webp"
     ],
-    "descripcion": "Vw Amarok V6 Comfortline.\n\nMod. 2020.\n\n80.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI PACK✅\n\nMODELO 2016✅\n\nMOTOR 1.8 NAFTA / GNC✅\n\nCAJA MANUAL 6 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "jeep-renegade-sport-2018",
-    "name": "Jeep Renegade Sport",
-    "marca": "Jeep",
-    "marcaId": "jeep",
-    "ano": 2018,
-    "kilometraje": 129000,
+    "id": "toyota-corolla-xei-2014",
+    "name": "Toyota Corolla Xei",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2014,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "SUV",
+    "categoria": "Sedan",
     "transmision": "Manual",
     "motor": "1.8",
     "combustible": "Nafta",
-    "puertas": 5,
+    "puertas": 4,
     "images": [
       "8-1.webp",
       "8-2.webp",
@@ -216,25 +253,32 @@
       "8-4.webp",
       "8-5.webp",
       "8-6.webp",
-      "8-7.webp"
+      "8-7.webp",
+      "8-8.webp",
+      "8-9.webp",
+      "8-10.webp",
+      "8-11.webp",
+      "8-12.webp",
+      "8-13.webp",
+      "8-14.webp"
     ],
-    "descripcion": "Jeep Renegade Sport.\n\nMod. 2018.\n\n129.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI✅\n\nMODELO 2014✅\n\nMOTOR 1.8 NAFTA ✅\n\nCAJA MANUAL 6 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "vw-amarok-v6-extreme-0km",
-    "name": "Vw Amarok V6 Extreme",
-    "marca": "Volkswagen",
-    "marcaId": "volkswagen",
-    "ano": 2025,
-    "kilometraje": 0,
+    "id": "toyota-corolla-xei-pack-2017",
+    "name": "Toyota Corolla Xei Pack",
+    "marca": "Toyota",
+    "marcaId": "toyota",
+    "ano": 2017,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Pickup",
+    "categoria": "Sedan",
     "transmision": "Automática",
-    "motor": "3.0",
-    "combustible": "Diésel",
+    "motor": "1.8",
+    "combustible": "Nafta/GNC",
     "puertas": 4,
     "images": [
       "9-1.webp",
@@ -249,24 +293,26 @@
       "9-10.webp",
       "9-11.webp",
       "9-12.webp",
-      "9-13.webp"
+      "9-13.webp",
+      "9-14.webp",
+      "9-15.webp"
     ],
-    "descripcion": "Vw Amarok V6 Extreme.\n\n0km.\n\nEntrega inmediata."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅TOYOTA COROLLA✅\n\nVERSIÓN XEI PACK✅\n\nMODELO 2017✅\n\nMOTOR 1.8 NAFTA / GNC✅\n\nCAJA AUTOMATICA 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS NUEVAS RECIÉN COLOCADAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "renault-kardian-techno-0km",
-    "name": "Renault Kardian Techno",
-    "marca": "Renault",
-    "marcaId": "renault",
-    "ano": 2025,
-    "kilometraje": 0,
+    "id": "volkswagen-golf-comfortline-2015",
+    "name": "Volkswagen Golf Comfortline",
+    "marca": "Volkswagen",
+    "marcaId": "volkswagen",
+    "ano": 2015,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "SUV",
+    "categoria": "Hatchback",
     "transmision": "Automática",
-    "motor": "1.0",
+    "motor": "1.4",
     "combustible": "Nafta",
     "puertas": 5,
     "images": [
@@ -277,23 +323,26 @@
       "10-5.webp",
       "10-6.webp",
       "10-7.webp",
-      "10-8.webp"
+      "10-8.webp",
+      "10-9.webp",
+      "10-10.webp",
+      "10-11.webp"
     ],
-    "descripcion": "Renault Kardian Techno.\n\n0km.\n\nEntrega inmediata."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN GOLF✅\n\nVERSIÓN COMFORTLINE ✅\n\nMODELO 2015✅\n\nMOTOR 1.4 TURBO NAFTA✅\n\nCAJA AUTOMÁTICA DSG 7 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS EXCELENTE ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "citroen-c4-cactus-shine-2025",
-    "name": "Citroën C4 Cactus Shine",
-    "marca": "Citroën",
-    "marcaId": "citroen",
-    "ano": 2025,
-    "kilometraje": 2500,
+    "id": "ford-focus-trend-2011",
+    "name": "Ford Focus Trend",
+    "marca": "Ford",
+    "marcaId": "ford",
+    "ano": 2011,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "SUV",
-    "transmision": "Automática",
+    "categoria": "Hatchback",
+    "transmision": "Manual",
     "motor": "1.6",
     "combustible": "Nafta",
     "puertas": 5,
@@ -306,26 +355,31 @@
       "11-6.webp",
       "11-7.webp",
       "11-8.webp",
-      "11-9.webp"
+      "11-9.webp",
+      "11-10.webp",
+      "11-11.webp",
+      "11-12.webp",
+      "11-13.webp",
+      "11-14.webp"
     ],
-    "descripcion": "Citroën C4 Cactus Shine.\n\nMod. 2025.\n\n2.500 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅FORD FOCUS✅\n\nVERSIÓN TREND✅\n\nMODELO 2011✅\n\nMOTOR 1.6 NAFTA ✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\nDISTRIBUCIÓN Y BOMBA DE AGUA HECHA✅\n\n4 CUBIERTAS NUEVAS✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   },
   {
-    "id": "vw-amarok-v6-highline-2022",
-    "name": "Vw Amarok V6 Highline",
+    "id": "volkswagen-gol-trend-pack-i-2013",
+    "name": "Volkswagen Gol Trend Pack I",
     "marca": "Volkswagen",
     "marcaId": "volkswagen",
-    "ano": 2022,
-    "kilometraje": 187000,
+    "ano": 2013,
+    "kilometraje": 999999,
     "precio": {
       "valor": 999999,
       "moneda": "ARS"
     },
-    "categoria": "Pickup",
-    "transmision": "Automática",
-    "motor": "3.0",
-    "combustible": "Diésel",
-    "puertas": 4,
+    "categoria": "Hatchback",
+    "transmision": "Manual",
+    "motor": "1.6",
+    "combustible": "Nafta",
+    "puertas": 5,
     "images": [
       "12-1.webp",
       "12-2.webp",
@@ -335,8 +389,11 @@
       "12-6.webp",
       "12-7.webp",
       "12-8.webp",
-      "12-9.webp"
+      "12-9.webp",
+      "12-10.webp",
+      "12-11.webp",
+      "12-12.webp"
     ],
-    "descripcion": "Vw Amarok V6 Highline.\n\nMod. 2022.\n\n187.000 kms."
+    "descripcion": "⚠️🚘NUEVO INGRESO🚘⚠️\n\n✅VOLKSWAGEN GOL TREND✅\n\nPACK I✅\n\nMODELO 2013✅\n\nMOTOR 1.6 NAFTA✅\n\nCAJA MANUAL 5 VELOCIDADES ✅\n\nCAMBIO DE ACEITE Y FILTROS HECHO✅\n\n4 CUBIERTAS BUEN ESTADO✅\n\nMANUALES Y LLAVE DE REPUESTO💎\n\nEXCELENTE UNIDAD, DE SELECCIÓN 📲\n\n🚘TOMAMOS TU USADO🚘\n\n🚀Reves Cars 🚀"
   }
 ]

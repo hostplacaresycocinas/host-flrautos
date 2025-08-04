@@ -4,25 +4,25 @@ export const company = {
   shortAdress: true,
   favicon: false,
   price: false,
-  objectCover: '50%',
-  id: 'automotoresjorge',
-  name: 'Automotores Jorge',
-  adress: 'Hipólito Yrigoyen 1472',
-  city: 'Chacabuco',
-  email: 'puritajorgito@gmail.com',
-  instagram: 'automotoresjorgejp',
-  facebook: 'https://www.facebook.com/profile.php?id=100063577988943',
-  whatsapp: ['2352468439', '2352407202'],
-  googlemapsLink: 'https://maps.app.goo.gl/95ZX7YNWewvywryGA',
+  objectCover: '70%',
+  id: 'revescars',
+  name: 'Reves Cars',
+  adress: 'C. 9 esquina 38',
+  city: 'Mercedes',
+  email: 'revescars@gmail.com',
+  instagram: 'reves_cars',
+  facebook: null,
+  whatsapp: ['2324520515'],
+  googlemapsLink: 'https://maps.app.goo.gl/zBRAUh3niFyZAg6n6',
   googlemaps:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.098251217865!2d-60.44218538356882!3d-34.62695733442777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b9251d84fc7b8b%3A0x899eb1d917280193!2sAutomotores%20Jorge!5e0!3m2!1sen!2sar!4v1754207255064!5m2!1sen!2sar',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.308866840863!2d-59.42321402339057!3d-34.64690185978169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc734ee06a53d3%3A0x306184038969766d!2sReves%20Cars!5e0!3m2!1sen!2sar!4v1754239932053!5m2!1sen!2sar',
   openDays: [
-    { day: 'Lunes', hours: ['8 a 12 y 15 a 19hs'] },
-    { day: 'Martes', hours: ['8 a 12 y 15 a 19hs'] },
-    { day: 'Miércoles', hours: ['8 a 12 y 15 a 19hs'] },
-    { day: 'Jueves', hours: ['8 a 12 y 15 a 19hs'] },
-    { day: 'Viernes', hours: ['8 a 12 y 15 a 19hs'] },
-    { day: 'Sábado', hours: ['8 a 12'] },
+    { day: 'Lunes', hours: ['08:00 a 20:00hs'] },
+    { day: 'Martes', hours: ['08:00 a 20:00hs'] },
+    { day: 'Miércoles', hours: ['08:00 a 20:00hs'] },
+    { day: 'Jueves', hours: ['08:00 a 20:00hs'] },
+    { day: 'Viernes', hours: ['08:00 a 20:00hs'] },
+    { day: 'Sábado', hours: ['09:00 a 20:00hs'] },
     // { day: 'Domingo', hours: ['09:00 a 13:00hs'] },
   ],
   footer:
@@ -33,8 +33,8 @@ export const API_BASE_URL = 'https://dealership.agenciagrvity.com';
 export const TENANT = 'accotto-automotores';
 
 export const metadataCompany = {
-  metadataBase: 'https://automotoresjorge.vercel.app/',
-  title: 'Automotores Jorge - Compra y Venta de Autos',
+  metadataBase: 'https://revescars.vercel.app/',
+  title: 'Reves Cars - Compra y Venta de Autos',
   description:
     'Compra y Venta de Autos: Vehículos seleccionados, atención personalizada.',
 };
