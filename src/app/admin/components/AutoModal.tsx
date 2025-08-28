@@ -740,16 +740,12 @@ const AutoModal = ({
                             <input
                               type='text'
                               value={formData.combustible}
-                              onChange={(e) =>
-                                setFormData((prev) => ({
-                                  ...prev,
-                                  combustible: e.target.value,
-                                }))
-                              }
+                              onChange={() => {}} // No permitir escritura
                               onFocus={() => setShowCombustibleDropdown(true)}
                               className={inputStyles}
                               placeholder='Seleccionar tipo de combustible'
                               required
+                              readOnly
                             />
                             <button
                               type='button'
@@ -860,16 +856,12 @@ const AutoModal = ({
                             <input
                               type='text'
                               value={formData.transmision}
-                              onChange={(e) =>
-                                setFormData((prev) => ({
-                                  ...prev,
-                                  transmision: e.target.value,
-                                }))
-                              }
+                              onChange={() => {}} // No permitir escritura
                               onFocus={() => setShowTransmisionDropdown(true)}
                               className={inputStyles}
                               placeholder='Seleccionar tipo de transmisión'
                               required
+                              readOnly
                             />
                             <button
                               type='button'

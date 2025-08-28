@@ -30,10 +30,10 @@ export const company = {
 };
 
 export const API_BASE_URL = 'https://dealership.agenciagrvity.com';
-export const TENANT = 'accotto-automotores';
+export const TENANT = 'flr-autos';
 
 export const metadataCompany = {
-  metadataBase: 'https://flrautos.vercel.app/',
+  metadataBase: 'https://flrautos.com.ar',
   title: 'FLR AUTOS - Compra y Venta de Autos',
   description:
     'Compra y Venta de Autos: Vehículos seleccionados, atención personalizada.',
