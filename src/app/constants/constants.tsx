@@ -29,8 +29,8 @@ export const company = {
     'Compra y Venta de Autos: Vehículos seleccionados, atención personalizada.',
 };
 
-export const API_BASE_URL = 'https://dealership.agenciagrvity.com';
-export const TENANT = 'flr-autos';
+export const API_BASE_URL = 'https://onlymotors-ml.agenciagrvity.com';
+export const TENANT = 'f2012dbf-5bc3-4d06-b30e-c68b93c866c3';
 
 export const metadataCompany = {
   metadataBase: 'https://flrautos.com.ar',

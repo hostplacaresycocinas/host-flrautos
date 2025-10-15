@@ -20,49 +20,46 @@ import { API_BASE_URL, TENANT } from '@/app/constants/constants';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
+interface FirstImage {
+  s3ImageUrl: string;
+  s3ThumbnailUrl: string;
+  order: number;
+}
+
 interface ApiCar {
   id: string;
+  credentialId: string;
+  itemId: string;
+  title: string;
+  status: string;
+  categoryId: string;
+  price: string;
+  availableQuantity: number;
+  soldQuantity: number;
+  condition: string;
+  listingTypeId: string;
+  permalink: string;
+  thumbnailUrl: string;
+  currencyId: string;
+  lastSyncedAt: string;
   brand: string;
   model: string;
   year: number;
-  color: string;
-  price: string;
-  currency: 'USD' | 'ARS';
-  description: string;
-  categoryId: string;
-  mileage: number;
+  kilometers: number;
+  fuelType: string;
   transmission: string;
-  fuel: string;
   doors: number;
-  position: number;
-  featured: boolean;
-  favorite: boolean;
-  active: boolean;
+  color: string;
+  engineSize: string;
+  attributes: string;
   createdAt: string;
   updatedAt: string;
-  Category: {
-    id: string;
-    name: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-  images: {
-    thumbnailUrl: string;
-  }[];
-}
-
-interface ApiResponse {
-  total: number;
-  totalPages: number;
-  currentPage: number;
-  cars: ApiCar[];
+  firstImage: FirstImage;
 }
 
 interface Category {
   id: string;
   name: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 const ITEMS_PER_PAGE = 12;
@@ -88,29 +85,44 @@ const CatalogoPage = () => {
   const fetchMarcas = async () => {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/cars/brands?tenant=${TENANT}`
+        `${API_BASE_URL}/api/items/brands?tenant=${TENANT}`
       );
       if (!response.ok) {
-        throw new Error('Error al cargar las marcas');
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
-      const data: string[] = await response.json();
-      setTodasLasMarcas(data.sort());
+      const data = await response.json();
+      // El endpoint devuelve un objeto con la propiedad 'brands'
+      const marcas =
+        data.brands && Array.isArray(data.brands) ? data.brands.sort() : [];
+      setTodasLasMarcas(marcas);
     } catch (error) {
       console.error('Error al cargar las marcas:', error);
     }
   };
 
-  // Función para obtener las categorías del API
+  // Función para obtener las categorías
   const fetchCategories = async () => {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/categories?tenant=${TENANT}`
+        `${API_BASE_URL}/api/items/categories?tenant=${TENANT}`
       );
       if (!response.ok) {
-        throw new Error('Error al cargar las categorías');
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
-      const data: Category[] = await response.json();
-      setCategorias(data);
+      const data = await response.json();
+      // El endpoint devuelve un objeto con la propiedad 'categories' que es un array de strings
+      const categoriesArray =
+        data.categories && Array.isArray(data.categories)
+          ? data.categories
+          : [];
+
+      const categoriasProcesadas = categoriesArray.map((category: string) => ({
+        id: category.toLowerCase(),
+        name:
+          category.charAt(0).toUpperCase() + category.slice(1).toLowerCase(),
+      }));
+
+      setCategorias(categoriasProcesadas);
     } catch (error) {
       console.error('Error al cargar las categorías:', error);
     }
@@ -123,25 +135,42 @@ const CatalogoPage = () => {
   ) => {
     setLoading(true);
     try {
-      let url = `${API_BASE_URL}/api/cars?page=${page}&limit=${ITEMS_PER_PAGE}&sort=position:desc&tenant=${TENANT}`;
+      // Construir query parameters
+      const params = new URLSearchParams();
+      params.append('tenant', TENANT);
+      params.append('page', page.toString());
+      params.append('limit', ITEMS_PER_PAGE.toString());
 
+      // Agregar filtros si existen
       if (filters?.search) {
-        url += `&model=${encodeURIComponent(filters.search)}`;
+        params.append('title', filters.search);
       }
       if (filters?.marca) {
-        url += `&brand=${encodeURIComponent(filters.marca)}`;
+        params.append('brand', filters.marca);
       }
       if (filters?.categoria) {
-        url += `&category=${encodeURIComponent(filters.categoria)}`;
+        // Normalizar la categoría antes de enviarla al API
+        params.append('category', filters.categoria.toLowerCase());
       }
 
-      const response = await fetch(url);
+      const response = await fetch(
+        `${API_BASE_URL}/api/items?${params.toString()}`
+      );
       if (!response.ok) {
-        throw new Error('Error al cargar los vehículos');
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
-      const data: ApiResponse = await response.json();
-      setCars(data.cars);
-      setTotalPages(data.totalPages);
+      const data = await response.json();
+
+      // Filtrar vehículos que tienen al menos 1 imagen y están activos
+      const filteredCars = (data.items || []).filter(
+        (car: ApiCar) =>
+          car.firstImage &&
+          car.firstImage.s3ThumbnailUrl &&
+          car.status === 'active'
+      );
+
+      setCars(filteredCars);
+      setTotalPages(data.pagination?.totalPages || 1);
     } catch (error) {
       console.error('Error al cargar los vehículos:', error);
     } finally {
@@ -237,21 +266,8 @@ const CatalogoPage = () => {
     executeSearch(searchValue);
   };
 
-  const filteredProducts = cars.filter((car) => {
-    const normalizedProductName = car.model
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
-
-    const matchesSearch = normalizedProductName
-      .toLowerCase()
-      .includes(searchFilter.toLowerCase());
-
-    const matchesMarca = !marcaFilter || car.brand === marcaFilter;
-    const matchesCategoria =
-      !categoriaFilter || car.Category.name === categoriaFilter;
-
-    return matchesSearch && matchesMarca && matchesCategoria;
-  });
+  // Los vehículos ya vienen filtrados del backend, no necesitamos filtrar localmente
+  const filteredProducts = cars;
 
   return (
     <div className='relative'>
@@ -350,11 +366,10 @@ const CatalogoPage = () => {
                       {categorias.map((categoria) => (
                         <SelectItem
                           key={categoria.id}
-                          value={categoria.name}
+                          value={categoria.name.toLowerCase()}
                           className='hover:text-color-primary hover:bg-neutral-700'
                         >
-                          {categoria.name.charAt(0).toUpperCase() +
-                            categoria.name.slice(1)}
+                          {categoria.name}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -460,15 +475,14 @@ const CatalogoPage = () => {
                           {categorias.map((categoria) => (
                             <SelectItem
                               key={categoria.id}
-                              value={categoria.name}
+                              value={categoria.name.toLowerCase()}
                               className={`${
                                 company.dark
                                   ? 'hover:text-color-primary-light'
                                   : 'hover:text-color-primary'
                               } hover:bg-neutral-700`}
                             >
-                              {categoria.name.charAt(0).toUpperCase() +
-                                categoria.name.slice(1)}
+                              {categoria.name}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -558,12 +572,12 @@ const CatalogoPage = () => {
                       className='w-full'
                     >
                       <Link
-                        href={`/catalogo/${car.id}`}
+                        href={`/catalogo/${car.itemId}`}
                         className='w-full relative overflow-hidden'
                       >
                         {/* Card container con borde que se ilumina */}
                         <div className='relative overflow-hidden group-hover:border-color-primary transition-all duration-500 h-full'>
-                          {!car.active && (
+                          {car.status !== 'active' && (
                             <div className='absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center z-20'>
                               <span className='bg-red-500 text-white text-sm font-medium px-3 py-1.5 rounded'>
                                 Pausado
@@ -585,10 +599,11 @@ const CatalogoPage = () => {
                                 height={600}
                                 className='object-cover w-full h-full transition-transform duration-700'
                                 src={
-                                  car.images[0]?.thumbnailUrl ||
-                                  '/assets/placeholder.webp'
+                                  car.firstImage?.s3ThumbnailUrl
+                                    ? car.firstImage.s3ThumbnailUrl
+                                    : '/assets/placeholder.webp'
                                 }
-                                alt={`${car.model}`}
+                                alt={`${car.title || car.model}`}
                               />
                             </motion.div>
 
@@ -634,22 +649,18 @@ const CatalogoPage = () => {
                                   : 'group-hover:text-color-primary-dark'
                               } text-color-title text-lg md:text-xl font-bold tracking-tight truncate md:mb-1 transition-colors duration-300`}
                             >
-                              {car.model}
+                              {car.title || car.model}
                             </h3>
 
-                            {car.price && parseFloat(car.price) > 0 ? (
+                            {car.price && parseFloat(car.price) > 0 && (
                               <div
                                 className={`${
                                   company.price ? '' : 'hidden'
                                 } text-color-primary text-lg md:text-xl font-bold tracking-tight truncate md:mb-1 transition-colors duration-300`}
                               >
-                                {car.currency === 'ARS' ? '$' : 'US$'}
-                                {parseFloat(car.price).toLocaleString(
-                                  car.currency === 'ARS' ? 'es-AR' : 'en-US'
-                                )}
+                                {car.currencyId === 'ARS' ? '$' : 'US$'}{' '}
+                                {parseFloat(car.price).toLocaleString('es-AR')}
                               </div>
-                            ) : (
-                              ''
                             )}
 
                             {/* Diseño minimalista con separadores tipo | */}
@@ -669,17 +680,17 @@ const CatalogoPage = () => {
 
                             {/* Precio o etiqueta destacada */}
                             <div className='flex justify-between items-center text-color-text mt-0.5'>
-                              {car.mileage === 0 ? (
+                              {car.kilometers === 0 ? (
                                 <span className='text-sm font-semibold uppercase tracking-wider text-color-primary'>
                                   Nuevo{' '}
                                   <span className='text-color-primary'>•</span>{' '}
-                                  {car.mileage.toLocaleString('es-ES')} km
+                                  {car.kilometers.toLocaleString('es-ES')} km
                                 </span>
                               ) : (
                                 <span className='text-sm text-color-text font-medium uppercase tracking-wider'>
                                   Usado{' '}
                                   <span className='text-color-primary'>•</span>{' '}
-                                  {car.mileage.toLocaleString('es-ES')} km
+                                  {car.kilometers.toLocaleString('es-ES')} km
                                 </span>
                               )}
                             </div>

@@ -6,10 +6,10 @@ import { company } from '@/app/constants/constants';
 import Image from 'next/image';
 import InstagramIcon from './icons/InstagramIcon';
 import FacebookIcon from './icons/FacebookIcon';
-import WhatsappIcon from './icons/WhatsappIcon';
+import WhatsappFillIcon from './icons/WhatsappFillIcon';
 
 import Link from 'next/link';
-import GravityLogo from './icons/GravityLogo';
+import OnlymotorsLogo from './icons/OnlymotorsLogo';
 
 const Footer = () => {
   return (
@@ -17,9 +17,7 @@ const Footer = () => {
       <footer
         id='contactoSection'
         className={`flex justify-center pt-10 shadow-top-lg relative font-medium ${
-          company.darkmode
-            ? 'bg-color-bg-secondary-dark'
-            : 'bg-color-bg-primary'
+          company.darkmode ? 'bg-color-bg-secondary-dark' : 'bg-white'
         } `}
         style={{ boxShadow: '0 -4px 6px rgba(0, 0, 0, 0.1)' }}
       >
@@ -38,7 +36,7 @@ const Footer = () => {
                     />
                   </div>
                 ) : (
-                  <div className='w-52 sm:w-52 md:w-56 lg:w-64 h-14 md:h-16'>
+                  <div className='w-56 sm:w-56 md:w-64 lg:w-72 h-14 md:h-16'>
                     <Image
                       className='w-full h-full object-contain object-left'
                       src='/assets/company/logo.webp'
@@ -95,7 +93,7 @@ const Footer = () => {
                       target='_blank'
                       rel='noopener noreferrer'
                     >
-                      <WhatsappIcon
+                      <WhatsappFillIcon
                         className={`w-8 h-8 ${
                           company.darkmode
                             ? 'text-color-text-light hover:text-color-primary-light'
@@ -261,7 +259,7 @@ const Footer = () => {
                 <span>-</span>
                 <span>{company.name}</span>
               </div>
-              <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-1.5'>
                 <span
                   className={`${
                     company.darkmode
@@ -272,16 +270,16 @@ const Footer = () => {
                   Desarrollado por:
                 </span>
                 <a
-                  href='https://www.agenciagravity.com/'
+                  href='https://www.onlymotors.com.ar/'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  <GravityLogo
-                    className={`w-20 md:w-24 ${
-                      company.darkmode
-                        ? 'text-white hover:text-[#D1FA2D]'
-                        : 'text-black hover:text-black/70'
-                    } transition-colors`}
+                  <OnlymotorsLogo
+                    className='w-24 md:w-28 hover:opacity-80 transition-opacity duration-300'
+                    gradientStart={`${
+                      company.darkmode ? '#ffffff' : '#000000'
+                    }`}
+                    gradientEnd={`${company.darkmode ? '#A1A1A1' : '#1E1E1E'}`}
                   />
                 </a>
               </div>

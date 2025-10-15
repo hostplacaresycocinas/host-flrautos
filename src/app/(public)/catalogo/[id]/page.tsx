@@ -17,37 +17,43 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ShareMenu from '@/components/ShareMenu';
 
+interface Imagen {
+  s3ImageUrl: string;
+  s3ThumbnailUrl: string;
+  order: number;
+}
+
 interface ApiCar {
   id: string;
+  credentialId: string;
+  itemId: string;
+  title: string;
+  status: string;
+  categoryId: string;
+  category: string | null;
+  price: string;
+  availableQuantity: number;
+  soldQuantity: number;
+  condition: string;
+  listingTypeId: string;
+  permalink: string;
+  thumbnailUrl: string;
+  currencyId: string;
+  lastSyncedAt: string;
   brand: string;
   model: string;
   year: number;
-  color: string;
-  price: string;
-  currency: 'USD' | 'ARS';
-  description: string;
-  categoryId: string;
-  mileage: number;
+  kilometers: number;
+  fuelType: string;
   transmission: string;
-  fuel: string;
   doors: number;
-  position: number;
-  featured: boolean;
-  favorite: boolean;
-  active: boolean;
+  color: string;
+  engineSize: string;
+  attributes: string;
+  description: string;
   createdAt: string;
   updatedAt: string;
-  Category: {
-    id: string;
-    name: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-  images: {
-    thumbnailUrl: string;
-    imageUrl: string;
-    order: number;
-  }[];
+  images: Imagen[];
 }
 
 export default function AutoDetailPage() {
@@ -64,7 +70,7 @@ export default function AutoDetailPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [modalStartIndex, setModalStartIndex] = useState(0);
-  const [orderedImages, setOrderedImages] = useState<ApiCar['images']>([]);
+  const [orderedImages, setOrderedImages] = useState<Imagen[]>([]);
 
   const scrollPrev = useCallback(() => {
     if (embla) {
@@ -106,16 +112,21 @@ export default function AutoDetailPage() {
     const fetchCar = async () => {
       try {
         const response = await fetch(
-          `${API_BASE_URL}/api/cars/${id}?tenant=${TENANT}`
+          `${API_BASE_URL}/api/items/${id}?tenant=${TENANT}`
         );
         if (!response.ok) {
-          throw new Error('Error al cargar el vehículo');
+          if (response.status === 404) {
+            throw new Error('Vehículo no encontrado');
+          }
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
+
         // Ordenar las imágenes por el campo order
         const sortedImages = [...data.images].sort((a, b) => a.order - b.order);
+
         setOrderedImages(sortedImages);
-        setCar({ ...data, images: sortedImages });
+        setCar(data);
       } catch (error) {
         setError(
           error instanceof Error ? error.message : 'Error al cargar el vehículo'
@@ -125,7 +136,9 @@ export default function AutoDetailPage() {
       }
     };
 
-    fetchCar();
+    if (id) {
+      fetchCar();
+    }
   }, [id]);
 
   const renderContent = () => {
@@ -211,15 +224,20 @@ export default function AutoDetailPage() {
                   Catálogo
                 </p>
               </Link>
-              <DropDownIcon className='w-2.5 h-2.5 -rotate-90 text-color-text' />
-              <Link
-                href={`/catalogo?categoria=${car.Category.name.toLowerCase()}`}
-              >
-                <p className='text-color-text hover:text-color-primary transition-colors'>
-                  {car.Category.name.charAt(0).toUpperCase() +
-                    car.Category.name.slice(1)}
-                </p>
-              </Link>
+              {car.category && (
+                <>
+                  <DropDownIcon className='w-2.5 h-2.5 -rotate-90 text-color-text' />
+                  <Link
+                    href={`/catalogo?category=${encodeURIComponent(
+                      car.category
+                    )}`}
+                  >
+                    <p className='text-color-text hover:text-color-primary transition-colors'>
+                      {car.category}
+                    </p>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -283,8 +301,10 @@ export default function AutoDetailPage() {
                             className='w-full h-full flex items-center justify-center'
                           >
                             <Image
-                              src={image.imageUrl}
-                              alt={`${car.model} - Imagen ${index + 1}`}
+                              src={image.s3ImageUrl}
+                              alt={`${car.title || car.model} - Imagen ${
+                                index + 1
+                              }`}
                               fill
                               className='object-cover'
                               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -295,7 +315,7 @@ export default function AutoDetailPage() {
                           {/* Overlay de sombra al hacer hover */}
                           <div className='absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
 
-                          {!car.active && (
+                          {car.status !== 'active' && (
                             <div className='absolute inset-0 bg-black/70 flex items-center justify-center'>
                               <span className='bg-red-500 text-white text-xl md:text-2xl font-medium px-6 py-4 md:px-10 md:py-5 rounded-full'>
                                 Pausado
@@ -332,7 +352,7 @@ export default function AutoDetailPage() {
                             setShowModal(true);
                           }
                         }}
-                        className={`relative aspect-[4/3] rounded-lg overflow-hidden outline-none transition-all bg-gray-50 cursor-zoom-in group ${
+                        className={`relative aspect-[4/3] rounded-lg overflow-hidden outline-none transition-all first-letter:cursor-zoom-in group ${
                           selectedIndex === actualIndex ? '' : ''
                         }`}
                       >
@@ -343,11 +363,13 @@ export default function AutoDetailPage() {
                           className='w-full h-full flex items-center justify-center'
                         >
                           <Image
-                            src={image.thumbnailUrl}
-                            alt={`${car.model} - Miniatura ${actualIndex + 1}`}
+                            src={image.s3ThumbnailUrl}
+                            alt={`${car.title || car.model} - Miniatura ${
+                              actualIndex + 1
+                            }`}
                             fill
                             sizes='(max-width: 768px) 33vw, 200px'
-                            className={`object-contain ${
+                            className={`object-cover ${
                               shouldShowBlur ? 'blur-sm' : ''
                             }`}
                           />
@@ -392,7 +414,7 @@ export default function AutoDetailPage() {
               <div className='bg-white lg:border lg:border-gray-200 lg:rounded-lg lg:shadow-lg lg:p-8'>
                 <div className=' mb-3 md:mb-4 lg:mb-6'>
                   <h1 className='text-xl md:text-2xl font-semibold text-color-title line-clamp-3'>
-                    {car.model}
+                    {car.title || car.model}
                   </h1>
                   <div className='flex flex-wrap items-center gap-2 text-sm text-color-text mt-2'>
                     <span className='font-medium text-color-text'>
@@ -402,28 +424,27 @@ export default function AutoDetailPage() {
                     <span className='font-medium text-color-text'>
                       {car.year}
                     </span>
-                    <span className='text-color-primary'>•</span>
-                    <span className='font-medium text-color-text'>
-                      {car.Category.name.charAt(0).toUpperCase() +
-                        car.Category.name.slice(1)}
-                    </span>
+                    {car.category && (
+                      <>
+                        <span className='text-color-primary'>•</span>
+                        <span className='font-medium text-color-text'>
+                          {car.category}
+                        </span>
+                      </>
+                    )}
                   </div>
                 </div>
 
                 {/* Precio */}
-                {car.price && parseFloat(car.price) > 0 ? (
+                {car.price && parseFloat(car.price) > 0 && (
                   <div
                     className={`${
                       company.price ? '' : 'hidden'
                     } text-2xl font-bold text-color-primary mb-2 md:mb-4`}
                   >
-                    {car.currency === 'ARS' ? '$' : 'US$'}
-                    {parseFloat(car.price).toLocaleString(
-                      car.currency === 'ARS' ? 'es-AR' : 'en-US'
-                    )}
+                    {car.currencyId === 'ARS' ? '$' : 'US$'}{' '}
+                    {parseFloat(car.price).toLocaleString('es-AR')}
                   </div>
-                ) : (
-                  ''
                 )}
 
                 <div className='grid grid-cols-2 md:grid-cols-3 gap-4 text-color-text mb-6'>
@@ -433,21 +454,21 @@ export default function AutoDetailPage() {
                     </p>
                     <p
                       className={`font-medium ${
-                        car.mileage === 0
+                        car.kilometers === 0
                           ? 'text-color-primary font-semibold'
                           : 'text-color-title'
                       }`}
                     >
-                      {car.mileage.toLocaleString('es-AR')} km
+                      {car.kilometers.toLocaleString('es-AR')} km
                     </p>
                   </div>
-                  {car.color && (
+                  {car.engineSize && (
                     <div className='flex flex-col gap-1'>
                       <p className='text-color-text text-sm font-medium'>
                         Motor
                       </p>
                       <p className='text-color-title font-medium'>
-                        {car.color}
+                        {car.engineSize}
                       </p>
                     </div>
                   )}
@@ -467,7 +488,9 @@ export default function AutoDetailPage() {
                     <p className='text-color-text text-sm font-medium'>
                       Combustible
                     </p>
-                    <p className='text-color-title font-medium'>{car.fuel}</p>
+                    <p className='text-color-title font-medium'>
+                      {car.fuelType}
+                    </p>
                   </div>
                   {car.doors && (
                     <div>
@@ -482,10 +505,14 @@ export default function AutoDetailPage() {
                 </div>
 
                 {/* Botones de acción */}
-                {car.active && (
+                {car.status === 'active' && (
                   <div className='flex flex-col gap-3 mt-3 '>
                     <Link
-                      href={`https://api.whatsapp.com/send?phone=549${company.whatsapp[0]}&text=Hola! Quería consultar por ${car.model}`}
+                      href={`https://api.whatsapp.com/send?phone=549${
+                        company.whatsapp[0]
+                      }&text=Hola! Quería consultar por ${
+                        car.title || car.model
+                      }`}
                       target='_blank'
                       rel='noopener noreferrer'
                       className='w-full h-12 bg-color-primary hover:bg-color-primary-dark text-color-title-light flex gap-2 font-medium rounded text-center transition-colors justify-center items-center'
@@ -500,7 +527,7 @@ export default function AutoDetailPage() {
                             ? window.location.href
                             : ''
                         }
-                        title={`${car.model} ${car.year}`}
+                        title={`${car.title || car.model} ${car.year}`}
                       />
                     </div>
                   </div>
@@ -525,7 +552,7 @@ export default function AutoDetailPage() {
         {/* Modal de galería */}
         {showModal && (
           <ImageGalleryModal
-            images={orderedImages.map((img) => img.imageUrl)}
+            images={orderedImages.map((img) => img.s3ImageUrl)}
             currentIndex={modalStartIndex}
             productId={car.id}
             marcaId={car.brand.toLowerCase()}
@@ -537,7 +564,7 @@ export default function AutoDetailPage() {
           {/* Carrusel de vehículos relacionados */}
           <CarrouselRelated
             title='Recomendados'
-            currentCarId={car.id}
+            currentCarId={car.itemId}
             categoryId={car.categoryId}
           />
         </section>

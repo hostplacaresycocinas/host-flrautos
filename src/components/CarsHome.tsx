@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { API_BASE_URL, company, TENANT } from '@/app/constants/constants';
+import { company, API_BASE_URL, TENANT } from '@/app/constants/constants';
 
 interface FirstImage {
   s3ImageUrl: string;
@@ -13,7 +13,7 @@ interface FirstImage {
   order: number;
 }
 
-interface Auto {
+interface ApiCar {
   id: string;
   credentialId: string;
   itemId: string;
@@ -44,25 +44,29 @@ interface Auto {
   firstImage: FirstImage;
 }
 
-interface CarrouselRelatedProps {
+interface CarsHomeProps {
   title: string;
-  currentCarId: string;
-  categoryId: string;
 }
 
-const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
-  const [emblaRef] = useEmblaCarousel({ dragFree: true });
+const CarsHome = ({ title }: CarsHomeProps) => {
+  const [emblaRef] = useEmblaCarousel({ dragFree: true, loop: false });
   const [clicked, setClicked] = useState(false);
-  const [relatedCars, setRelatedCars] = useState<Auto[]>([]);
-  const [cargando, setCargando] = useState(true);
+  const [vehiculos, setVehiculos] = useState<ApiCar[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const obtenerRelacionados = async () => {
-      setCargando(true);
+    const loadVehiculos = async () => {
+      setLoading(true);
       try {
+        // Construir query parameters para obtener vehículos destacados
+        const params = new URLSearchParams();
+        params.append('tenant', TENANT);
+        params.append('page', '1');
+        params.append('limit', '10'); // Máximo 10 vehículos
+
         const response = await fetch(
-          `${API_BASE_URL}/api/items/related/${currentCarId}?tenant=${TENANT}`
+          `${API_BASE_URL}/api/items?${params.toString()}`
         );
 
         if (!response.ok) {
@@ -71,32 +75,27 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
 
         const data = await response.json();
 
-        if (!Array.isArray(data.relatedItems)) {
-          throw new Error('Formato de respuesta inválido');
-        }
-
         // Filtrar vehículos que tienen al menos 1 imagen y están activos
-        const filteredCars = (data.relatedItems || []).filter(
-          (car: Auto) =>
+        const filteredCars = (data.items || []).filter(
+          (car: ApiCar) =>
             car.firstImage &&
             car.firstImage.s3ThumbnailUrl &&
             car.status === 'active'
         );
-        setRelatedCars(filteredCars);
+
+        setVehiculos(filteredCars);
       } catch (err) {
-        console.error('Error al obtener vehículos relacionados:', err);
-        setError('No se pudieron cargar los vehículos relacionados');
+        console.error('Error al cargar vehículos:', err);
+        setError('No se pudieron cargar los vehículos');
       } finally {
-        setCargando(false);
+        setLoading(false);
       }
     };
 
-    if (currentCarId) {
-      obtenerRelacionados();
-    }
-  }, [currentCarId]);
+    loadVehiculos();
+  }, []);
 
-  if (cargando) {
+  if (loading) {
     return (
       <section className='flex justify-center w-full bg-color-bg-primary'>
         <div className='max-w-7xl w-full mx-4 sm:mx-6 md:mx-8 lg:mx-10 overflow-hidden'>
@@ -130,7 +129,7 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
     );
   }
 
-  if (relatedCars.length === 0) {
+  if (vehiculos.length === 0) {
     return (
       <section className='flex justify-center w-full bg-color-bg-primary'>
         <div className='max-w-7xl w-full mx-4 sm:mx-6 md:mx-8 lg:mx-10 overflow-hidden'>
@@ -141,7 +140,7 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
             </h3>
           </div>
           <div className='text-center py-8 text-color-text'>
-            No hay vehículos relacionados disponibles
+            No hay vehículos disponibles
           </div>
         </div>
       </section>
@@ -162,18 +161,21 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
           onMouseUp={() => setClicked(false)}
           onMouseDown={() => setClicked(true)}
           ref={emblaRef}
-          className={`${clicked ? 'cursor-grabbing' : 'cursor-grab'}`}
+          className={`${
+            clicked ? 'cursor-grabbing' : 'cursor-grab'
+          } select-none`}
         >
           <div className='flex gap-6 sm:gap-7 md:gap-8'>
-            {relatedCars.map((auto) => (
+            {/* Vehículos */}
+            {vehiculos.map((car) => (
               <Link
-                href={`/catalogo/${auto.itemId}`}
+                href={`/catalogo/${car.itemId}`}
                 className='w-full relative overflow-hidden flex-[0_0_75%] min-[500px]:flex-[0_0_55%] sm:flex-[0_0_40%] lg:flex-[0_0_30%] xl:flex-[0_0_26%]'
-                key={auto.id}
+                key={car.id}
               >
                 {/* Card container con borde que se ilumina */}
                 <div className='relative overflow-hidden group-hover:border-color-primary transition-all duration-500 h-full shadow-[0_8px_30px_-15px_rgba(0,0,0,0.7)] group-hover:shadow-[0_8px_30px_-10px_rgba(233,0,2,0.2)]'>
-                  {auto.status !== 'active' && (
+                  {car.status !== 'active' && (
                     <div className='absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center z-20'>
                       <span className='bg-red-500 text-white text-sm font-medium px-3 py-1.5 rounded'>
                         Pausado
@@ -195,10 +197,11 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
                         height={600}
                         className='object-cover w-full h-full transition-transform duration-700'
                         src={
-                          auto.firstImage?.s3ThumbnailUrl ||
-                          '/assets/placeholder.webp'
+                          car.firstImage?.s3ThumbnailUrl
+                            ? car.firstImage.s3ThumbnailUrl
+                            : '/assets/placeholder.webp'
                         }
-                        alt={`${auto.title || auto.model}`}
+                        alt={`${car.title || car.model}`}
                       />
                     </motion.div>
 
@@ -244,18 +247,18 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
                           : 'group-hover:text-color-primary-dark'
                       } text-color-title text-lg md:text-xl font-bold tracking-tight truncate md:mb-1 transition-colors duration-300`}
                     >
-                      {auto.title || auto.model}
+                      {car.title || car.model}
                     </h3>
 
-                    {auto.price && parseFloat(auto.price) > 0 ? (
+                    {car.price && parseFloat(car.price) > 0 ? (
                       <div
                         className={`${
                           company.price ? '' : 'hidden'
                         } text-color-primary text-lg md:text-xl font-bold tracking-tight truncate md:mb-1 transition-colors duration-300`}
                       >
-                        {auto.currencyId === 'ARS' ? '$' : 'US$'}
-                        {parseFloat(auto.price).toLocaleString(
-                          auto.currencyId === 'ARS' ? 'es-AR' : 'en-US'
+                        {car.currencyId === 'ARS' ? '$' : 'US$'}
+                        {parseFloat(car.price).toLocaleString(
+                          car.currencyId === 'ARS' ? 'es-AR' : 'en-US'
                         )}
                       </div>
                     ) : (
@@ -264,7 +267,7 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
 
                     {/* Diseño minimalista con separadores tipo | */}
                     <div className='flex flex-wrap items-center text-color-text font-medium'>
-                      <span className=''>{auto.brand}</span>
+                      <span className=''>{car.brand}</span>
                       <span
                         className={`${
                           company.dark
@@ -274,20 +277,20 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
                       >
                         |
                       </span>
-                      <span>{auto.year}</span>
+                      <span>{car.year}</span>
                     </div>
 
                     {/* Precio o etiqueta destacada */}
                     <div className='flex justify-between items-center text-color-text mt-0.5'>
-                      {auto.kilometers === 0 ? (
+                      {car.kilometers === 0 ? (
                         <span className='text-sm font-semibold uppercase tracking-wider text-color-primary'>
                           Nuevo <span className='text-color-primary'>•</span>{' '}
-                          {auto.kilometers.toLocaleString('es-ES')} km
+                          {car.kilometers.toLocaleString('es-ES')} km
                         </span>
                       ) : (
                         <span className='text-sm text-color-text font-medium uppercase tracking-wider'>
                           Usado <span className='text-color-primary'>•</span>{' '}
-                          {auto.kilometers.toLocaleString('es-ES')} km
+                          {car.kilometers.toLocaleString('es-ES')} km
                         </span>
                       )}
                     </div>
@@ -317,4 +320,4 @@ const CarrouselRelated = ({ title, currentCarId }: CarrouselRelatedProps) => {
   );
 };
 
-export default CarrouselRelated;
+export default CarsHome;
