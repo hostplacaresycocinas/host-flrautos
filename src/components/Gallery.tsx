@@ -20,6 +20,14 @@ const galleryImages = [
     src: '/assets/gallery/gallery-1000-3.webp',
     alt: 'Imagen 3 Galería',
   },
+  {
+    src: '/assets/gallery/gallery-1000-4.webp',
+    alt: 'Imagen 4 Galería',
+  },
+  {
+    src: '/assets/gallery/gallery-1000-5.webp',
+    alt: 'Imagen 5 Galería',
+  },
 ];
 
 const Gallery = () => {
@@ -54,10 +62,10 @@ const Gallery = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-            className='text-color-text max-w-2xl mx-auto md:text-lg font-medium'
+            className='text-color-text max-w-2xl mx-auto md:text-lg font-medium text-balance'
           >
-            Cada vehículo seleccionado con el cuidado y la calidad que nos
-            caracteriza.
+            Tu concesionaria de confianza. Vehículos seleccionados,
+            financiamiento flexible y gestoría propia.
           </motion.p>
         </div>
         <motion.article

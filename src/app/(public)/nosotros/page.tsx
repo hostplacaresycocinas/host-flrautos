@@ -76,92 +76,110 @@ const NosotrosPage = () => {
           </motion.div>
         </section>
 
-        {/* Cards de valores */}
-        <section className='max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 place-items-center gap-6 mb-16 md:mt-16'>
+        {/* Cards de beneficios */}
+        <section className='max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 md:mt-16'>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className='max-w-xs h-full bg-white rounded-2xl shadow-md px-6 py-8 flex flex-col items-center text-center border-t-4 border-color-primary/70'
+            className='relative bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg overflow-hidden'
           >
-            {/* Icono de variedad/estrellas */}
-            <svg
-              className='text-color-primary text-3xl mb-2'
-              width='32'
-              height='32'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              <polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2' />
-            </svg>
-            <h4 className='font-bold text-lg mb-1 text-color-title'>
-              Variedad y calidad
-            </h4>
-            <p className='text-color-text text-sm lg:text-base'>
-              Catálogo seleccionado de autos de todas las marcas y modelos, con
-              altos estándares de calidad.
-            </p>
+            {/* Borde superior decorativo */}
+            <div className='absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-color-primary to-color-primary-dark'></div>
+
+            {/* Contenido */}
+            <div className='p-6 flex flex-col items-start'>
+              {/* Icono con fondo */}
+              <div className='mb-4 p-4 bg-color-primary/10 rounded-xl'>
+                <svg
+                  className='text-color-primary w-8 h-8'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
+                  <polyline points='14 2 14 8 20 8' />
+                  <path d='M12 18v-6' />
+                  <path d='M9 15l3 3 3-3' />
+                </svg>
+              </div>
+
+              <h4 className='font-bold text-xl mb-3 text-color-title'>
+                Gestoría propia
+              </h4>
+              <p className='text-color-text text-sm lg:text-base leading-relaxed'>
+                Nos encargamos de todos los trámites y documentación.
+                Transferencia rápida y segura sin complicaciones.
+              </p>
+            </div>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className='max-w-xs h-full bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center border-t-4 border-color-primary/70'
+            className='relative bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg overflow-hidden'
           >
-            {/* Icono de atención personalizada */}
-            <svg
-              className='text-color-primary text-3xl mb-2'
-              width='32'
-              height='32'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' />
-              <circle cx='12' cy='7' r='4' />
-            </svg>
-            <h4 className='font-bold text-lg mb-1 text-color-title'>
-              Atención personalizada
-            </h4>
-            <p className='text-color-text text-sm lg:text-base'>
-              Acompañamiento profesional y asesoramiento honesto en todo el
-              proceso de compra.
-            </p>
+            {/* Borde superior decorativo */}
+            <div className='absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-color-primary to-color-primary-dark'></div>
+
+            {/* Contenido */}
+            <div className='p-6 flex flex-col items-start'>
+              {/* Icono con fondo - Símbolo de dinero */}
+              <div className='mb-4 p-4 bg-color-primary/10 rounded-xl'>
+                <svg
+                  className='text-color-primary w-8 h-8'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <line x1='12' y1='1' x2='12' y2='23' />
+                  <path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' />
+                </svg>
+              </div>
+
+              <h4 className='font-bold text-xl mb-3 text-color-title'>
+                Financiamiento a medida
+              </h4>
+              <p className='text-color-text text-sm lg:text-base leading-relaxed'>
+                Planes de financiamiento personalizados adaptados a tus
+                necesidades. Con o sin anticipo.
+              </p>
+            </div>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className='max-w-xs h-full bg-white rounded-2xl shadow-md p-6 flex flex-col items-center text-center border-t-4 border-color-primary/70'
+            className='relative bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg overflow-hidden'
           >
-            {/* Icono de garantía */}
-            <svg
-              className='text-color-primary text-3xl mb-2'
-              width='32'
-              height='32'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' />
-              <path d='m9 12 2 2 4-4' />
-            </svg>
-            <h4 className='font-bold text-lg mb-1 text-color-title'>
-              Compromiso y confianza
-            </h4>
-            <p className='text-color-text text-sm lg:text-base'>
-              Garantía, servicio postventa y transparencia en cada operación.
-            </p>
+            {/* Borde superior decorativo */}
+            <div className='absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-color-primary to-color-primary-dark'></div>
+
+            {/* Contenido */}
+            <div className='p-6 flex flex-col items-start'>
+              {/* Badge con número */}
+              <div className='mb-4 px-5 py-3 bg-color-primary/10 rounded-xl'>
+                <span className='text-color-primary text-2xl font-bold'>
+                  +15
+                </span>
+              </div>
+
+              <h4 className='font-bold text-xl mb-3 text-color-title'>
+                Años de experiencia
+              </h4>
+              <p className='text-color-text text-sm lg:text-base leading-relaxed'>
+                Más de 15 años de trayectoria en el sector automotriz nos
+                respaldan. Confianza y profesionalismo garantizados.
+              </p>
+            </div>
           </motion.div>
         </section>
       </div>

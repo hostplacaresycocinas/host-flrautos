@@ -12,7 +12,7 @@ export const company = {
   email: null,
   instagram: 'flrautos',
   facebook: 'https://www.facebook.com/profile.php?id=100064852563739',
-  whatsapp: ['1165360666', '1163575463'],
+  whatsapp: ['1165360666', '1163575463', '1166215060'],
   googlemapsLink: 'https://maps.app.goo.gl/StFyyX1NsCxGxeqi7',
   googlemaps:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.1293841173324!2d-58.78113992981694!3d-34.65143525483052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc95aa9d271c1f%3A0x6539b19b9bab1599!2sFlr%20Autos!5e0!3m2!1sen!2sar!4v1754243883235!5m2!1sen!2sar',
@@ -22,11 +22,11 @@ export const company = {
     { day: 'Miércoles', hours: ['10:00 a 17:00hs'] },
     { day: 'Jueves', hours: ['10:00 a 17:00hs'] },
     { day: 'Viernes', hours: ['10:00 a 17:00hs'] },
-    // { day: 'Sábado', hours: ['09:00 a 20:00hs'] },
+    { day: 'Sábado', hours: ['Con cita Previa'] },
     // { day: 'Domingo', hours: ['09:00 a 13:00hs'] },
   ],
   footer:
-    'Compra y Venta de Autos: Vehículos seleccionados, atención personalizada.',
+    'Compra y Venta de Autos: Vehículos seleccionados en Moreno, financiamiento flexible y gestoría propia.',
 };
 
 export const API_BASE_URL = 'https://onlymotors-ml.agenciagrvity.com';
@@ -36,7 +36,7 @@ export const metadataCompany = {
   metadataBase: 'https://flrautos.com.ar',
   title: 'FLR AUTOS - Compra y Venta de Autos',
   description:
-    'Compra y Venta de Autos: Vehículos seleccionados, atención personalizada.',
+    'Compra y Venta de Autos: Vehículos seleccionados en Moreno, financiamiento flexible y gestoría propia.',
 };
 
 // Cambie el archivo data.json, necesito que actualices la informacion de catalogo.json. Las images tomalas de images de data.json, la descripcion tomala de caption de data.json, pero necesito que el texto este parseado, que no este todo junto sin espacios y saltos de linea. En name pone la marca y el modelo del vehiculo en title case, marca, marcaId todo esto acorde a la informacion de caption. Si en caption no se dice kilometraje o precio pone 999999, categoria estimala para el vehiculo (categorias tipicas de vehiculos en argentina. como utilitario, deportivo, suv, hatchback, etc). Transmision, motor, combustible y puertas estimalas acorde al vehiculo. La cantidad de vehiculos tiene que ser la de data.json, si en catalogo.json hay otros vehiculos removelos, los vehiclos de catalogo json tienen que ser los mismos que en data.json. No hagas un script, simplemente actualizalo con ia.
