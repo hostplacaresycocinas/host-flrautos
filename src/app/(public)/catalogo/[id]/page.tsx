@@ -110,7 +110,6 @@ export default function AutoDetailPage() {
 
   useEffect(() => {
     let isMounted = true;
-    const timeoutId: NodeJS.Timeout;
     const currentId = id as string;
 
     // Resetear estado
@@ -156,7 +155,7 @@ export default function AutoDetailPage() {
 
     // Usar un pequeño debounce para prevenir llamadas duplicadas en StrictMode
     // Esto permite que solo la última ejecución haga el fetch
-    timeoutId = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       if (currentId && isMounted) {
         fetchCar();
       }
