@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LogOut, LayoutDashboard, History } from 'lucide-react';
+import { LogOut, LayoutDashboard } from 'lucide-react';
 import Cookies from 'js-cookie';
 
 export default function AdminLayout({

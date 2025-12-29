@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import { API_BASE_URL, TENANT } from '@/app/constants/constants';
+import { API_BASE_URL } from '@/app/constants/constants';
 
 // URL base del API
 

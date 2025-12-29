@@ -64,17 +64,6 @@ interface AutoFormData {
 // URL base del API
 import { API_BASE_URL, TENANT } from '@/app/constants/constants';
 
-interface Imagen {
-  thumbnailUrl: string;
-}
-
-interface Categoria {
-  id: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
 interface Auto {
   id: string;
   itemId: string;
