@@ -494,7 +494,7 @@ export default function DashboardPage() {
       if (response.ok) {
         const data = await response.json();
         setAnalyticsSummary({
-          totalViews: data.totalViews || 0,
+          totalViews: data.activeItemsViews || 0,
           itemViews: data.itemViews || 0,
           pageViews: data.pageViews || 0,
         });
