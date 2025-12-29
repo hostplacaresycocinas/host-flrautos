@@ -14,6 +14,7 @@ import {
   Save,
   Search,
   X,
+  Eye,
 } from 'lucide-react';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
@@ -76,9 +77,11 @@ interface Categoria {
 
 interface Auto {
   id: string;
+  itemId: string;
   marca: string;
   marcaId: string;
   modelo: string;
+  title: string;
   año: number;
   precio: number;
   currency: 'USD' | 'ARS';
@@ -94,38 +97,61 @@ interface Auto {
   destacado: boolean;
   favorito: boolean;
   position: number;
+  totalViews?: number;
 }
 
-// Interfaz para la respuesta de la API
+// Interfaz para firstImage de la API
+interface FirstImage {
+  s3ImageUrl: string;
+  s3ThumbnailUrl: string;
+  order: number;
+}
+
+// Interfaz para la respuesta de la API /api/admin/items
 interface ApiCar {
   id: string;
+  itemId: string;
+  title: string;
+  status: string;
+  categoryId: string;
+  category?: string;
+  price: string;
+  currencyId: string;
   brand: string;
   model: string;
   year: number;
-  color: string;
-  price: string;
-  currency: 'USD' | 'ARS';
-  description: string;
-  position: number;
-  featured: boolean;
-  favorite: boolean;
-  active: boolean;
-  categoryId: string;
-  mileage: number;
+  kilometers: number;
+  fuelType: string;
   transmission: string;
-  fuel: string;
   doors: number;
+  color: string;
+  engineSize: string;
+  thumbnailUrl: string;
+  description?: string;
+  show?: boolean;
   createdAt: string;
   updatedAt: string;
-  Category: Categoria;
-  images: Imagen[];
+  firstImage?: FirstImage;
+  // Campos adicionales que pueden estar presentes
+  availableQuantity?: number;
+  soldQuantity?: number;
+  condition?: string;
+  listingTypeId?: string;
+  permalink?: string;
+  lastSyncedAt?: string;
+  attributes?: string;
+}
+
+interface Pagination {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
 }
 
 interface ApiResponse {
-  total: number;
-  totalPages: number;
-  currentPage: number;
-  cars: ApiCar[];
+  items: ApiCar[];
+  pagination: Pagination;
 }
 
 // Componente para un auto que se puede arrastrar
@@ -176,7 +202,9 @@ const SortableAutoCard = ({
       className={`relative bg-white rounded-lg overflow-hidden [box-shadow:0_0_10px_rgba(0,0,0,0.08)] transition-shadow ${
         isDragging ? 'shadow-lg border-2 border-red-400 opacity-90' : ''
       } cursor-pointer hover:[box-shadow:0_0_10px_rgba(0,0,0,0.2)]`}
-      onClick={() => onEdit(auto)}
+      onClick={() => {
+        window.open(`/catalogo/${auto.itemId}`, '_blank');
+      }}
     >
       <div className='p-4 sm:p-6'>
         <div className='flex flex-col sm:flex-row gap-4'>
@@ -186,7 +214,7 @@ const SortableAutoCard = ({
                 priority
                 src={auto.imagenes[0]}
                 alt={`${auto.modelo}`}
-                width={400}
+                width={500}
                 height={320}
                 className='object-cover rounded-lg'
               />
@@ -214,7 +242,7 @@ const SortableAutoCard = ({
             <div className='flex justify-between items-start'>
               <div>
                 <h3 className='text-lg lg:text-xl font-semibold text-gray-900'>
-                  {auto.modelo}
+                  {auto.title}
                 </h3>
                 <p className='text-gray-600 lg:text-lg'>{auto.año}</p>
                 {auto.precio && auto.precio > 0 ? (
@@ -231,8 +259,14 @@ const SortableAutoCard = ({
                   {auto.kilometraje.toLocaleString('es-AR')} km •{' '}
                   {auto.combustible}
                 </p>
+                {auto.totalViews !== undefined && (
+                  <div className='flex items-center gap-1 mt-2 text-sm text-gray-600'>
+                    <Eye size={16} className='text-gray-500' />
+                    <span>{auto.totalViews} visitas</span>
+                  </div>
+                )}
               </div>
-              <div className='flex gap-2'>
+              <div className='flex gap-2 hidden'>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -253,7 +287,7 @@ const SortableAutoCard = ({
                       onToggleDestacado(auto.id);
                     }
                   }}
-                  className={`p-2 rounded-full transition-all ${
+                  className={`p-2 rounded-full transition-all hidden ${
                     auto.destacado
                       ? 'bg-blue-100 text-blue-700 hover:bg-blue-200 shadow-sm'
                       : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
@@ -279,7 +313,7 @@ const SortableAutoCard = ({
                       onToggleFavorito(auto.id);
                     }
                   }}
-                  className={`p-2 rounded-full transition-all ${
+                  className={`p-2 rounded-full transition-all hidden ${
                     auto.favorito
                       ? 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200 shadow-sm'
                       : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
@@ -320,7 +354,7 @@ const SortableAutoCard = ({
             </div>
 
             {/* Botón de vender con posición absoluta */}
-            <div className='mt-4 flex justify-end'>
+            <div className='mt-4 flex justify-end hidden'>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -376,6 +410,11 @@ export default function DashboardPage() {
   const [resultadosBusqueda, setResultadosBusqueda] = useState<Auto[]>([]);
   const [totalResultados, setTotalResultados] = useState(0);
   const [paginasBusqueda, setPaginasBusqueda] = useState(1);
+  const [analyticsSummary, setAnalyticsSummary] = useState<{
+    totalViews: number;
+    itemViews: number;
+    pageViews: number;
+  } | null>(null);
 
   // Configuración de sensores para DnD
   const sensors = useSensors(
@@ -396,7 +435,87 @@ export default function DashboardPage() {
     router.push('/admin/login');
   };
 
-  // Obtener todos los autos (sin búsqueda)
+  // Función para obtener las visitas de un item
+  const fetchItemViews = async (itemId: string): Promise<number> => {
+    try {
+      const token = Cookies.get('admin-auth');
+      if (!token) return 0;
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/analytics/items/${itemId}/views?tenant=${TENANT}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json',
+          },
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.totalViews || 0;
+      }
+      return 0;
+    } catch (error) {
+      console.error(`Error al obtener visitas del item ${itemId}:`, error);
+      return 0;
+    }
+  };
+
+  // Función para cargar las visitas de múltiples items en paralelo
+  const loadItemsViews = async (items: Auto[]): Promise<Auto[]> => {
+    try {
+      // Obtener visitas en paralelo para todos los items
+      const viewsPromises = items.map((item) =>
+        fetchItemViews(item.id).then((views) => ({ id: item.id, views }))
+      );
+
+      const viewsResults = await Promise.all(viewsPromises);
+      const viewsMap = new Map(
+        viewsResults.map((result) => [result.id, result.views])
+      );
+
+      // Actualizar los items con las visitas
+      return items.map((item) => ({
+        ...item,
+        totalViews: viewsMap.get(item.id) || 0,
+      }));
+    } catch (error) {
+      console.error('Error al cargar visitas de items:', error);
+      return items;
+    }
+  };
+
+  // Función para obtener el resumen de analytics
+  const fetchAnalyticsSummary = async () => {
+    try {
+      const token = Cookies.get('admin-auth');
+      if (!token) return;
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/analytics/credential/summary?tenant=${TENANT}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json',
+          },
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setAnalyticsSummary({
+          totalViews: data.totalViews || 0,
+          itemViews: data.itemViews || 0,
+          pageViews: data.pageViews || 0,
+        });
+      }
+    } catch (error) {
+      console.error('Error al obtener resumen de analytics:', error);
+    }
+  };
+
+  // Obtener todos los autos (sin búsqueda) - usando endpoint /api/admin/items
   const fetchTodosLosAutos = async (page = 1, append = false) => {
     if (page === 1) {
       setLoading(true);
@@ -406,8 +525,16 @@ export default function DashboardPage() {
     setError(null);
     try {
       const token = Cookies.get('admin-auth');
+      if (!token) {
+        handleUnauthorized();
+        return;
+      }
 
-      const url = `${API_BASE_URL}/api/admin/cars?page=${page}&limit=12&tenant=${TENANT}`;
+      const params = new URLSearchParams();
+      params.append('page', page.toString());
+      params.append('limit', '12');
+
+      const url = `${API_BASE_URL}/api/admin/items?${params.toString()}`;
 
       const response = await fetch(url, {
         headers: {
@@ -416,7 +543,7 @@ export default function DashboardPage() {
         },
       });
 
-      if (response.status === 403) {
+      if (response.status === 401 || response.status === 403) {
         handleUnauthorized();
         return;
       }
@@ -429,36 +556,44 @@ export default function DashboardPage() {
 
       const data: ApiResponse = await response.json();
 
-      const autosFormateados: Auto[] = data.cars.map((car) => ({
+      // Mapear los datos del endpoint admin a la estructura del dashboard
+      const autosFormateados: Auto[] = (data.items || []).map((car) => ({
         id: car.id,
+        itemId: car.itemId,
         marca: car.brand,
         marcaId: car.brand.toLowerCase(),
         modelo: car.model,
+        title: car.title,
         año: car.year,
-        precio: parseFloat(car.price),
-        currency: car.currency || 'USD',
-        active: car.active,
-        imagenes:
-          car.images && car.images.length > 0
-            ? car.images.map((img) => img.thumbnailUrl)
-            : [],
-        descripcion: car.description,
-        kilometraje: car.mileage,
-        combustible: car.fuel,
-        transmision: car.transmission,
-        puertas: car.doors,
-        categoria: car.Category?.name || 'Sin categoría',
-        categoriaId: car.categoryId,
-        destacado: car.featured,
-        favorito: car.favorite,
-        position: car.position,
+        precio: parseFloat(car.price) || 0,
+        currency: car.currencyId === 'ARS' ? 'ARS' : 'USD',
+        active: car.status === 'active' && car.show !== false,
+        imagenes: car.firstImage?.s3ThumbnailUrl
+          ? [car.firstImage.s3ThumbnailUrl]
+          : car.thumbnailUrl
+          ? [car.thumbnailUrl]
+          : [],
+        descripcion: car.description || car.title || '',
+        kilometraje: car.kilometers || 0,
+        combustible: car.fuelType || '',
+        transmision: car.transmission || '',
+        puertas: car.doors || 0,
+        categoria: car.category || 'Sin categoría',
+        categoriaId: car.categoryId || '',
+        destacado: false, // Estos campos no vienen en la respuesta, se obtienen de otros endpoints
+        favorito: false,
+        position: 0,
+        totalViews: 0, // Se cargará después
       }));
+
+      // Cargar las visitas de los items
+      const autosConVisitas = await loadItemsViews(autosFormateados);
 
       // Mantener un registro de todos los autos cargados
       if (append) {
         // Si estamos añadiendo más autos a los existentes
         const autosIds = new Set(todosLosAutos.map((auto) => auto.id));
-        const nuevosAutos = autosFormateados.filter(
+        const nuevosAutos = autosConVisitas.filter(
           (auto) => !autosIds.has(auto.id)
         );
 
@@ -471,23 +606,30 @@ export default function DashboardPage() {
       } else {
         // Si estamos recargando completamente (página 1)
         setTodosLosAutos(
-          autosFormateados.sort((a, b) => b.position - a.position)
+          autosConVisitas.sort((a, b) => b.position - a.position)
         );
       }
 
       // Actualizar la página actual y la vista
       if (page === 1) {
-        setAutos(autosFormateados);
+        setAutos(autosConVisitas);
       } else {
         // Solo actualizar autos si es la primera carga o si estamos en modo no-append
         if (!append) {
-          setAutos(autosFormateados);
+          setAutos(autosConVisitas);
         }
       }
 
-      setCurrentPage(data.currentPage);
-      setTotalPages(data.totalPages);
-      setTotalAutos(data.total);
+      // Actualizar paginación desde el objeto pagination
+      const pagination = data.pagination || {
+        page: page,
+        limit: 12,
+        total: 0,
+        totalPages: 1,
+      };
+      setCurrentPage(pagination.page);
+      setTotalPages(pagination.totalPages);
+      setTotalAutos(pagination.total);
 
       setBuscando(false);
     } catch (error) {
@@ -501,7 +643,7 @@ export default function DashboardPage() {
     }
   };
 
-  // Buscar autos
+  // Buscar autos - usando endpoint /api/admin/items
   const fetchBusqueda = async (page = 1, append = false, search = '') => {
     if (page === 1) {
       setLoading(true);
@@ -511,10 +653,20 @@ export default function DashboardPage() {
     setError(null);
     try {
       const token = Cookies.get('admin-auth');
+      if (!token) {
+        handleUnauthorized();
+        return;
+      }
 
-      const url = `${API_BASE_URL}/api/admin/cars?page=${page}&limit=12${
-        search ? `&model=${encodeURIComponent(search)}` : ''
-      }&tenant=${TENANT}`;
+      const params = new URLSearchParams();
+      params.append('page', page.toString());
+      params.append('limit', '12');
+
+      if (search) {
+        params.append('title', search);
+      }
+
+      const url = `${API_BASE_URL}/api/admin/items?${params.toString()}`;
 
       const response = await fetch(url, {
         headers: {
@@ -523,7 +675,7 @@ export default function DashboardPage() {
         },
       });
 
-      if (response.status === 403) {
+      if (response.status === 401 || response.status === 403) {
         handleUnauthorized();
         return;
       }
@@ -536,39 +688,57 @@ export default function DashboardPage() {
 
       const data: ApiResponse = await response.json();
 
-      const autosFormateados: Auto[] = data.cars.map((car) => ({
+      // Mapear los datos del endpoint admin a la estructura del dashboard
+      const autosFormateados: Auto[] = (data.items || []).map((car) => ({
         id: car.id,
+        itemId: car.itemId,
         marca: car.brand,
         marcaId: car.brand.toLowerCase(),
         modelo: car.model,
+        title: car.title,
         año: car.year,
-        precio: parseFloat(car.price),
-        currency: car.currency || 'USD',
-        active: car.active,
-        imagenes: car.images.map((img) => img.thumbnailUrl),
-        descripcion: car.description,
-        kilometraje: car.mileage,
-        combustible: car.fuel,
-        transmision: car.transmission,
-        puertas: car.doors,
-        categoria: car.Category?.name || 'Sin categoría',
-        categoriaId: car.categoryId,
-        destacado: car.featured,
-        favorito: car.favorite,
-        position: car.position,
+        precio: parseFloat(car.price) || 0,
+        currency: car.currencyId === 'ARS' ? 'ARS' : 'USD',
+        active: car.status === 'active' && car.show !== false,
+        imagenes: car.firstImage?.s3ThumbnailUrl
+          ? [car.firstImage.s3ThumbnailUrl]
+          : car.thumbnailUrl
+          ? [car.thumbnailUrl]
+          : [],
+        descripcion: car.description || car.title || '',
+        kilometraje: car.kilometers || 0,
+        combustible: car.fuelType || '',
+        transmision: car.transmission || '',
+        puertas: car.doors || 0,
+        categoria: car.category || 'Sin categoría',
+        categoriaId: car.categoryId || '',
+        destacado: false, // Estos campos no vienen en la respuesta, se obtienen de otros endpoints
+        favorito: false,
+        position: 0,
+        totalViews: 0, // Se cargará después
       }));
+
+      // Cargar las visitas de los items
+      const autosConVisitas = await loadItemsViews(autosFormateados);
 
       // Actualizar resultados de búsqueda
       if (append) {
-        setResultadosBusqueda((prev) => [...prev, ...autosFormateados]);
+        setResultadosBusqueda((prev) => [...prev, ...autosConVisitas]);
       } else {
-        setResultadosBusqueda(autosFormateados);
+        setResultadosBusqueda(autosConVisitas);
       }
 
+      // Actualizar paginación desde el objeto pagination
+      const pagination = data.pagination || {
+        page: page,
+        limit: 12,
+        total: 0,
+        totalPages: 1,
+      };
       setBuscando(true);
-      setCurrentPage(data.currentPage);
-      setPaginasBusqueda(data.totalPages);
-      setTotalResultados(data.total);
+      setCurrentPage(pagination.page);
+      setPaginasBusqueda(pagination.totalPages);
+      setTotalResultados(pagination.total);
     } catch (error) {
       console.error('Error al buscar autos:', error);
       setError(
@@ -722,13 +892,17 @@ export default function DashboardPage() {
       // Obtener el auto actualizado de la respuesta
       const autoActualizado: ApiCar = await response.json();
 
+      // Calcular el estado active basado en status y show
+      const nuevoActive =
+        autoActualizado.status === 'active' && autoActualizado.show !== false;
+
       // Actualizar el auto en la lista local para evitar tener que recargar toda la lista
       setAutos((prevAutos) =>
         prevAutos.map((auto) =>
           auto.id === id
             ? {
                 ...auto,
-                active: autoActualizado.active,
+                active: nuevoActive,
               }
             : auto
         )
@@ -740,7 +914,7 @@ export default function DashboardPage() {
           auto.id === id
             ? {
                 ...auto,
-                active: autoActualizado.active,
+                active: nuevoActive,
               }
             : auto
         )
@@ -753,7 +927,7 @@ export default function DashboardPage() {
             auto.id === id
               ? {
                   ...auto,
-                  active: autoActualizado.active,
+                  active: nuevoActive,
                 }
               : auto
           )
@@ -766,7 +940,7 @@ export default function DashboardPage() {
           auto.id === id
             ? {
                 ...auto,
-                active: autoActualizado.active,
+                active: nuevoActive,
               }
             : auto
         )
@@ -777,7 +951,7 @@ export default function DashboardPage() {
           auto.id === id
             ? {
                 ...auto,
-                active: autoActualizado.active,
+                active: nuevoActive,
               }
             : auto
         )
@@ -1201,9 +1375,11 @@ export default function DashboardPage() {
           // Crear el objeto actualizado con las imágenes ordenadas
           const autoActualizado: Auto = {
             id: selectedAuto.id,
+            itemId: selectedAuto.itemId,
             marca: autoCompleto.brand,
             marcaId: autoCompleto.brand.toLowerCase(),
             modelo: autoCompleto.model,
+            title: autoCompleto.title || selectedAuto.title,
             año: autoCompleto.year,
             precio: parseFloat(autoCompleto.price),
             currency: autoCompleto.currency || 'USD',
@@ -1489,24 +1665,30 @@ export default function DashboardPage() {
       const data: ApiCar[] = await response.json();
       const autosFormateados: Auto[] = data.map((car) => ({
         id: car.id,
+        itemId: car.itemId,
         marca: car.brand,
         marcaId: car.brand.toLowerCase(),
         modelo: car.model,
+        title: car.title,
         año: car.year,
-        precio: parseFloat(car.price),
-        currency: car.currency || 'USD',
-        active: car.active,
-        imagenes: car.images.map((img) => img.thumbnailUrl),
-        descripcion: car.description,
-        kilometraje: car.mileage,
-        combustible: car.fuel,
-        transmision: car.transmission,
-        puertas: car.doors,
-        categoria: car.Category?.name || 'Sin categoría',
-        categoriaId: car.categoryId,
-        destacado: car.featured,
-        favorito: car.favorite,
-        position: car.position,
+        precio: parseFloat(car.price) || 0,
+        currency: car.currencyId === 'ARS' ? 'ARS' : 'USD',
+        active: car.status === 'active' && car.show !== false,
+        imagenes: car.firstImage?.s3ThumbnailUrl
+          ? [car.firstImage.s3ThumbnailUrl]
+          : car.thumbnailUrl
+          ? [car.thumbnailUrl]
+          : [],
+        descripcion: car.description || car.title || '',
+        kilometraje: car.kilometers || 0,
+        combustible: car.fuelType || '',
+        transmision: car.transmission || '',
+        puertas: car.doors || 0,
+        categoria: car.category || 'Sin categoría',
+        categoriaId: car.categoryId || '',
+        destacado: true, // Estos autos vienen del endpoint de destacados
+        favorito: false,
+        position: 0,
       }));
 
       setAutosDestacados(autosFormateados);
@@ -1541,24 +1723,30 @@ export default function DashboardPage() {
       const data: ApiCar[] = await response.json();
       const autosFormateados: Auto[] = data.map((car) => ({
         id: car.id,
+        itemId: car.itemId,
         marca: car.brand,
         marcaId: car.brand.toLowerCase(),
         modelo: car.model,
+        title: car.title,
         año: car.year,
-        precio: parseFloat(car.price),
-        currency: car.currency || 'USD',
-        active: car.active,
-        imagenes: car.images.map((img) => img.thumbnailUrl),
-        descripcion: car.description,
-        kilometraje: car.mileage,
-        combustible: car.fuel,
-        transmision: car.transmission,
-        puertas: car.doors,
-        categoria: car.Category?.name || 'Sin categoría',
-        categoriaId: car.categoryId,
-        destacado: car.featured,
-        favorito: car.favorite,
-        position: car.position,
+        precio: parseFloat(car.price) || 0,
+        currency: car.currencyId === 'ARS' ? 'ARS' : 'USD',
+        active: car.status === 'active' && car.show !== false,
+        imagenes: car.firstImage?.s3ThumbnailUrl
+          ? [car.firstImage.s3ThumbnailUrl]
+          : car.thumbnailUrl
+          ? [car.thumbnailUrl]
+          : [],
+        descripcion: car.description || car.title || '',
+        kilometraje: car.kilometers || 0,
+        combustible: car.fuelType || '',
+        transmision: car.transmission || '',
+        puertas: car.doors || 0,
+        categoria: car.category || 'Sin categoría',
+        categoriaId: car.categoryId || '',
+        destacado: false,
+        favorito: true, // Estos autos vienen del endpoint de favoritos
+        position: 0,
       }));
 
       setAutosFavoritos(autosFormateados);
@@ -1571,6 +1759,7 @@ export default function DashboardPage() {
   useEffect(() => {
     fetchAutosDestacados();
     fetchAutosFavoritos();
+    fetchAnalyticsSummary();
   }, []);
 
   // Función para manejar la búsqueda
@@ -1612,19 +1801,34 @@ export default function DashboardPage() {
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4'>
         <div className='flex flex-col'>
           <h1 className='text-2xl font-semibold text-color-text'>
-            Administrar Vehículos{' '}
+            Visitas Mercadolibre{' '}
             {loading && (
               <RefreshCw className='inline ml-2 h-5 w-5 animate-spin' />
             )}
           </h1>
-          <p className='text-gray-500'>
-            Total: <span className='font-medium'>{totalAutos}</span> vehículos
-            {buscando && (
-              <span className='ml-2'>({totalResultados} encontrados)</span>
+          <div className='flex flex-col gap-1'>
+            <p className='text-gray-500'>
+              Total: <span className='font-medium'>{totalAutos}</span> vehículos
+              {buscando && (
+                <span className='ml-2'>({totalResultados} encontrados)</span>
+              )}
+            </p>
+            {analyticsSummary && (
+              <div className='flex items-center gap-4 text-sm'>
+                <div className='flex items-center gap-1 text-gray-600'>
+                  <Eye size={16} className='text-gray-500' />
+                  <span>
+                    <span className='font-semibold'>
+                      {analyticsSummary.totalViews.toLocaleString('es-AR')}
+                    </span>{' '}
+                    visitas totales
+                  </span>
+                </div>
+              </div>
             )}
-          </p>
+          </div>
         </div>
-        <div className='flex items-center gap-3'>
+        <div className='flex items-center gap-3 hidden'>
           {ordenModificado && (
             <button
               onClick={guardarOrden}
@@ -1639,7 +1843,7 @@ export default function DashboardPage() {
               Guardar orden
             </button>
           )}
-          <div className='flex items-center gap-2 text-sm'>
+          <div className='flex items-center gap-2 text-sm hidden'>
             <div className='bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full'>
               <span className='font-semibold'>{autosDestacados.length}/10</span>{' '}
               ingresos
@@ -1738,8 +1942,7 @@ export default function DashboardPage() {
                   key={auto.id}
                   className='relative bg-white rounded-lg overflow-hidden [box-shadow:0_0_10px_rgba(0,0,0,0.08)] cursor-pointer hover:[box-shadow:0_0_10px_rgba(0,0,0,0.2)]'
                   onClick={() => {
-                    setSelectedAuto(auto);
-                    setIsModalOpen(true);
+                    window.open(`/catalogo/${auto.itemId}`, '_blank');
                   }}
                 >
                   <div className='p-4 sm:p-6'>
@@ -1749,7 +1952,7 @@ export default function DashboardPage() {
                           <Image
                             priority
                             src={auto.imagenes[0]}
-                            alt={`${auto.modelo}`}
+                            alt={`${auto.title}`}
                             width={400}
                             height={320}
                             className='object-cover rounded-lg'
@@ -1772,7 +1975,7 @@ export default function DashboardPage() {
                         <div className='flex justify-between items-start'>
                           <div>
                             <h3 className='text-lg lg:text-xl font-semibold text-gray-900'>
-                              {auto.marca} {auto.modelo}
+                              {auto.title}
                             </h3>
                             <p className='text-gray-600 lg:text-lg'>
                               {auto.año}
@@ -1791,8 +1994,14 @@ export default function DashboardPage() {
                               {auto.kilometraje.toLocaleString('es-AR')} km •{' '}
                               {auto.combustible}
                             </p>
+                            {auto.totalViews !== undefined && (
+                              <div className='flex items-center gap-1 mt-2 text-sm text-gray-600'>
+                                <Eye size={16} className='text-gray-500' />
+                                <span>{auto.totalViews} visitas</span>
+                              </div>
+                            )}
                           </div>
-                          <div className='flex gap-2'>
+                          <div className='flex gap-2 hidden'>
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -1889,7 +2098,7 @@ export default function DashboardPage() {
                         </div>
 
                         {/* Botón de vender con posición absoluta */}
-                        <div className='mt-4 flex justify-end'>
+                        <div className='mt-4 flex justify-end hidden'>
                           <button
                             onClick={(e) => {
                               e.stopPropagation();

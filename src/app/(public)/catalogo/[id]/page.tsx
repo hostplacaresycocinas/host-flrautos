@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -109,10 +109,19 @@ export default function AutoDetailPage() {
   }, [embla]);
 
   useEffect(() => {
+    let isMounted = true;
+    let timeoutId: NodeJS.Timeout;
+    const currentId = id as string;
+
+    // Resetear estado
+    setLoading(true);
+    setError(null);
+    setCar(null);
+
     const fetchCar = async () => {
       try {
         const response = await fetch(
-          `${API_BASE_URL}/api/items/${id}?tenant=${TENANT}`
+          `${API_BASE_URL}/api/items/${currentId}?tenant=${TENANT}`
         );
         if (!response.ok) {
           if (response.status === 404) {
@@ -122,23 +131,41 @@ export default function AutoDetailPage() {
         }
         const data = await response.json();
 
-        // Ordenar las imágenes por el campo order
-        const sortedImages = [...data.images].sort((a, b) => a.order - b.order);
+        // Actualizar el estado si el componente sigue montado
+        if (isMounted) {
+          // Ordenar las imágenes por el campo order
+          const sortedImages = [...data.images].sort(
+            (a, b) => a.order - b.order
+          );
 
-        setOrderedImages(sortedImages);
-        setCar(data);
+          setOrderedImages(sortedImages);
+          setCar(data);
+          setLoading(false);
+        }
       } catch (error) {
-        setError(
-          error instanceof Error ? error.message : 'Error al cargar el vehículo'
-        );
-      } finally {
-        setLoading(false);
+        if (isMounted) {
+          setError(
+            error instanceof Error
+              ? error.message
+              : 'Error al cargar el vehículo'
+          );
+          setLoading(false);
+        }
       }
     };
 
-    if (id) {
-      fetchCar();
-    }
+    // Usar un pequeño debounce para prevenir llamadas duplicadas en StrictMode
+    // Esto permite que solo la última ejecución haga el fetch
+    timeoutId = setTimeout(() => {
+      if (currentId && isMounted) {
+        fetchCar();
+      }
+    }, 50);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timeoutId);
+    };
   }, [id]);
 
   const renderContent = () => {

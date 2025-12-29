@@ -23,19 +23,16 @@ export default function LoginPage() {
     const password = formData.get('password') as string;
 
     try {
-      // URL correcta del endpoint de login
-      const response = await fetch(
-        `${API_BASE_URL}/api/admin/login?tenant=${TENANT}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          // Enviar username y password exactamente como espera el API
-          body: JSON.stringify({ username, password }),
-        }
-      );
+      // URL correcta del endpoint de login (sin tenant)
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        // Enviar username y password exactamente como espera el API
+        body: JSON.stringify({ username, password }),
+      });
 
       // Obtener la respuesta como texto para depuración
       const responseText = await response.text();
@@ -59,6 +56,15 @@ export default function LoginPage() {
       // También guardar información de usuario si está disponible
       if (data.user) {
         Cookies.set('admin-user', JSON.stringify(data.user), { expires: 7 });
+      }
+
+      // Guardar información de MercadoLibre si está disponible
+      if (data.mercadoLibreAccount) {
+        Cookies.set(
+          'admin-ml-account',
+          JSON.stringify(data.mercadoLibreAccount),
+          { expires: 7 }
+        );
       }
 
       // Redirigir al dashboard
