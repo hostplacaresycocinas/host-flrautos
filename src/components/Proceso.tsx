@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { company } from '@/app/constants/constants';
 
@@ -75,58 +74,26 @@ const Proceso = () => {
   return (
     <section className='flex flex-col items-center justify-center py-10 md:py-16'>
       <div className='max-w-7xl w-full flex flex-col px-4 md:px-8'>
-        {/* Título y subtítulo */}
-        <div className='text-center mb-3 md:mb-5 lg:mb-10'>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-            className='text-2xl md:text-3xl lg:text-4xl font-extrabold text-color-title mb-2'
-          >
-            Por qué elegir <span className='text-color-primary'>nuestros</span>{' '}
-            vehículos
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-            className='text-color-text max-w-xl mx-auto md:text-lg font-medium'
-          >
-            En {company.name} nos especializamos en ofrecer vehículos de calidad
-            con el respaldo y confianza que mereces.
-          </motion.p>
-        </div>
         {/* Layout principal */}
-        <div className='flex flex-col lg:flex-row items-center justify-center gap-3 md:gap-5 lg:gap-10 w-full'>
-          {/* Imagen del auto */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-            className='flex justify-center'
-          >
-            <div className='relative max-w-md lg:max-w-full'>
-              <Image
-                src='/assets/proceso/proceso-1.webp'
-                alt='Auto destacado'
-                width={608}
-                height={480}
-                className='object-cover aspect-[4/3] w-[300px] sm:w-[350px] md:w-[400px] lg:w-[460px] xl:w-[500px] rounded-lg md:rounded-xl'
-                priority
-              />
-            </div>
-          </motion.div>
+        <div className='flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-10 w-full'>
           {/* Beneficios */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, margin: '0px 0px -100px 0px' }}
-            className='w-full lg:w-1/2 flex flex-col gap-6'
+            className='w-full lg:w-1/2 flex flex-col gap-6 order-1 lg:order-2'
           >
+            <div className='text-center lg:text-left'>
+              <h2 className='text-2xl md:text-3xl lg:text-4xl font-extrabold text-color-title mb-2'>
+                Por qué elegir{' '}
+                <span className='text-color-primary'>nuestros</span> vehículos
+              </h2>
+              <p className='text-color-text max-w-xl mx-auto lg:mx-0 md:text-lg font-medium'>
+                En {company.name} nos especializamos en ofrecer vehículos de
+                calidad con el respaldo y confianza que mereces.
+              </p>
+            </div>
             {beneficios.map((b, i) => (
               <div
                 key={i}
@@ -145,6 +112,27 @@ const Proceso = () => {
                 </div>
               </div>
             ))}
+          </motion.div>
+          {/* Video del auto */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+            className='flex justify-center order-2 lg:order-1'
+          >
+            <div className='relative max-w-md lg:max-w-full'>
+              <video
+                src='/assets/proceso/proceso-video.mp4'
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload='metadata'
+                poster='/assets/proceso/proceso-1.webp'
+                className='object-cover aspect-[9/16] w-full max-w-[360px] sm:max-w-[400px] md:max-w-[440px] lg:max-w-[340px] xl:max-w-[380px] rounded-lg md:rounded-xl'
+              />
+            </div>
           </motion.div>
         </div>
       </div>
